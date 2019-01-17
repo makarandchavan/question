@@ -27,3 +27,7 @@
 	color: #a886f4;
     border-bottom: 1px solid #a886f4;
 }
+
+.m-login.m-login--1 .m-login__wrapper .m-login__form .m-form__group .form-control.m-login__form-input--last {
+	border-bottom: 1px solid #ebedf2;
+}
