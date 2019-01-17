@@ -97,7 +97,7 @@ License: You must have a valid license purchased only from themeforest(the above
 							<div class="m-login__wrapper">
 								<div class="m-login__logo">
 									<a href="#">
-										<img src="../../../assets/app/media/img/logos/logo-2.png">
+										<span>CA Exam Club</span>
 									</a>
 								</div>
 								<div class="m-login__signin">
@@ -132,18 +132,38 @@ License: You must have a valid license purchased only from themeforest(the above
 										<h3 class="m-login__title">Sign Up</h3>
 										<!-- <div class="m-login__desc">Enter your details to create your account:</div> -->
 									</div>
-									<!-- <form class="m-login__form m-form" action="">
+									<!-- Proplet Starts -->
+									<form class="m-login__form m-form" action="">
 										<div class="form-group m-form__group">
-											<input class="form-control m-input" type="text" placeholder="Fullname" name="fullname">
+											<label for="">I am a</label>
+											<div class="m-radio-list-inline">
+												<label class="m-radio">
+						                           	<input type="radio" name="who_am_i" checked="checked"> Student 
+						                            <span></span>
+						                        </label>
+						                        <label class="m-radio">
+						                           	<input type="radio" name="who_am_i"> Professor
+						                            <span></span>
+						                        </label>
+						                    </div>
 										</div>
 										<div class="form-group m-form__group">
-											<input class="form-control m-input" type="text" placeholder="Email" name="email" autocomplete="off">
+											<input class="form-control m-input" type="text" placeholder="First Name" name="firstname">
 										</div>
 										<div class="form-group m-form__group">
-											<input class="form-control m-input" type="password" placeholder="Password" name="password">
+											<input class="form-control m-input" type="text" placeholder="Last Name" name="lastname">
 										</div>
 										<div class="form-group m-form__group">
-											<input class="form-control m-input m-login__form-input--last" type="password" placeholder="Confirm Password" name="rpassword">
+											<input class="form-control m-input" type="text" placeholder="Mobile Number" name="phone">
+										</div>
+										<div class="form-group m-form__group">
+											<input class="form-control m-input" type="email" placeholder="Email" name="email" autocomplete="off">
+										</div>
+										<div class="form-group m-form__group">
+											<input class="form-control m-input" type="password" placeholder="Password" name="password" id="password">
+										</div>
+										<div class="form-group m-form__group">
+											<input class="form-control m-input m-login__form-input--last" type="password" placeholder="Confirm Password" name="rpassword" id="rpassword">
 										</div>
 										<div class="row form-group m-form__group m-login__form-sub">
 											<div class="col m--align-left">
@@ -158,145 +178,7 @@ License: You must have a valid license purchased only from themeforest(the above
 											<button id="m_login_signup_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">Sign Up</button>
 											<button id="m_login_signup_cancel" class="btn btn-outline-focus  m-btn m-btn--pill m-btn--custom">Cancel</button>
 										</div>
-									</form> -->
-									<!-- Proplet Starts -->
-									<div class="m-portlet m-portlet--tabs">
-									<div class="m-portlet__head">
-										<div class="m-portlet__head-tools">
-											<ul class="nav nav-tabs m-tabs m-tabs-line   m-tabs-line--right m-tabs-line-danger" role="tablist">
-												<li class="nav-item m-tabs__item">
-													<a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_portlet_tab_1_1" role="tab">
-														Student
-													</a>
-												</li>
-												<li class="nav-item m-tabs__item">
-													<a class="nav-link m-tabs__link" data-toggle="tab" href="#m_portlet_tab_1_2" role="tab">
-														Professor
-													</a>
-												</li>
-											</ul>
-										</div>
-									</div>
-									<div class="m-portlet__body">
-										<div class="tab-content">
-											<div class="tab-pane active" id="m_portlet_tab_1_1">
-												<div class="m-login__head">
-													<!-- <h3 class="m-login__title">Sign Up for Student</h3> -->
-													<div class="m-login__desc">Enter your details to create your account:</div>
-												</div>
-												<form class="m-login__form m-form" action="">
-													<div class="form-group m-form__group">
-														<input class="form-control m-input" type="text" placeholder="First Name" name="firstname">
-													</div>
-													<div class="form-group m-form__group">
-														<input class="form-control m-input" type="text" placeholder="Last Name" name="lastname">
-													</div>
-													<!-- <div class="form-group m-form__group">
-														<select class="form-control m-input" name="option" aria-describedby="option-error" aria-invalid="true">
-															<option value="">Gender</option>
-															<option>Male</option>
-															<option>Female</option>
-														</select>
-													</div>
-													<div class="form-group m-form__group">
-														<input type="text" class="form-control m-input" id="m_datepicker" readonly="" placeholder="Date of Birth">
-													</div> -->
-													<div class="form-group m-form__group">
-														<input class="form-control m-input" type="tel" placeholder="Mobile Number" name="mobile">
-													</div>
-													<div class="form-group m-form__group">
-														<input class="form-control m-input" type="email" placeholder="Email" name="email" autocomplete="off">
-													</div>
-													<!-- <div class="form-group m-form__group">
-														<select class="form-control m-input" name="option" aria-describedby="option-error" aria-invalid="true">
-															<option value="">Course</option>
-															<option value="">Final CA (Old Course)</option>
-															<option value="">Final CA (New Course)</option>
-															<option value="">IPCC (Old Course)</option>
-															<option value="">Intermediate (New Course)</option>
-															<option value="">CPT (Old Course)</option>
-															<option value="">Foundation (New Course)</option>
-															<option value="">Others</option>
-														</select>
-													</div> -->
-													<!-- <div class="form-group m-form__group">
-														<input class="form-control m-input" type="text" placeholder="Pincode" name="pin" maxlength="6">
-													</div>
-													<div class="form-group m-form__group">
-														<input class="form-control m-input" type="text" placeholder="City" name="city">
-													</div>
-													<div class="form-group m-form__group">
-														<input class="form-control m-input" type="text" placeholder="State" name="state">
-													</div> -->
-													<div class="form-group m-form__group">
-														<input class="form-control m-input" type="password" placeholder="Password" name="password">
-													</div>
-													<div class="form-group m-form__group">
-														<input class="form-control m-input m-login__form-input--last" type="password" placeholder="Confirm Password" name="rpassword">
-													</div>
-													<div class="row form-group m-form__group m-login__form-sub">
-														<div class="col m--align-left">
-															<label class="m-checkbox m-checkbox--focus">
-																<input type="checkbox" name="agree"> I Agree the <a href="#" class="m-link m-link--focus">terms and conditions</a>.
-																<span></span>
-															</label>
-															<span class="m-form__help"></span>
-														</div>
-													</div>
-													<div class="m-login__form-action">
-														<button id="m_login_signup_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">Sign Up</button>
-														<button id="m_login_signup_cancel" class="btn btn-outline-focus  m-btn m-btn--pill m-btn--custom">Cancel</button>
-													</div>
-												</form>
-											</div>
-											<div class="tab-pane" id="m_portlet_tab_1_2">
-												<div class="m-login__head">
-													<!-- <h3 class="m-login__title">Sign Up for Professor</h3> -->
-													<div class="m-login__desc">Enter your details to create your account:</div>
-												</div>
-												<form class="m-login__form m-form" action="">
-													<div class="form-group m-form__group">
-														<input class="form-control m-input" type="text" placeholder="First Name" name="firstname">
-													</div>
-													<div class="form-group m-form__group">
-														<input class="form-control m-input" type="text" placeholder="Last Name" name="lastname">
-													</div>
-													<div class="form-group m-form__group">
-														<input class="form-control m-input" type="tel" placeholder="Mobile Number" name="mobile">
-													</div>
-													<div class="form-group m-form__group">
-														<input class="form-control m-input" type="email" placeholder="Email" name="email" autocomplete="off">
-													</div>
-													<!-- <div class="form-group m-form__group">
-														<input class="form-control m-input" type="email" placeholder="Name of the Institute where you work/teach/own?" name="institute" autocomplete="off">
-													</div>
-													<div class="form-group m-form__group">
-														<input class="form-control m-input" type="email" placeholder="Subjects you specialize in?" name="subjects" autocomplete="off">
-													</div> -->
-													<div class="form-group m-form__group">
-														<input class="form-control m-input" type="password" placeholder="Password" name="password">
-													</div>
-													<div class="form-group m-form__group">
-														<input class="form-control m-input m-login__form-input--last" type="password" placeholder="Confirm Password" name="rpassword">
-													</div>
-													<div class="row form-group m-form__group m-login__form-sub">
-														<div class="col m--align-left">
-															<label class="m-checkbox m-checkbox--focus">
-																<input type="checkbox" name="agree"> I Agree the <a href="#" class="m-link m-link--focus">terms and conditions</a>.
-																<span></span>
-															</label>
-															<span class="m-form__help"></span>
-														</div>
-													</div>
-													<div class="m-login__form-action">
-														<button id="m_login_signup_submit" class="btn btn-focus m-btn m-btn--pill m-btn--custom m-btn--air">Sign Up</button>
-														<button id="m_login_signup_cancel" class="btn btn-outline-focus  m-btn m-btn--pill m-btn--custom">Cancel</button>
-													</div>
-												</form>
-											</div>
-										</div>
-									</div>
-									</div>
+									</form>
 									<!-- Proplet Ends -->
 								</div>
 								<div class="m-login__forget-password">
@@ -328,7 +210,7 @@ License: You must have a valid license purchased only from themeforest(the above
 				</div>
 				<div class="m-grid__item m-grid__item--fluid m-grid m-grid--center m-grid--hor m-grid__item--order-tablet-and-mobile-1	m-login__content m-grid-item--center" style="background-image: url(../../../assets/app/media/img//bg/bg-4.jpg)">
 					<div class="m-grid__item">
-						<h3 class="m-login__welcome">Join Caexamclub</h3>
+						<h3 class="m-login__welcome">Join CA Exam Club</h3>
 						<p class="m-login__msg">
 							Lorem ipsum dolor sit amet, coectetuer adipiscing<br>elit sed diam nonummy et nibh euismod
 						</p>

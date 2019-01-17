@@ -113,8 +113,17 @@ var SnippetLogin = function() {
 
             form.validate({
                 rules: {
-                    fullname: {
+                    firstname: {
                         required: true
+                    },
+                    lastname: {
+                        required: true
+                    },
+                    phone: {
+                        required: true,
+                        digits: true,
+                        maxlength: 10,
+                        minlength: 10
                     },
                     email: {
                         required: true,
@@ -124,7 +133,8 @@ var SnippetLogin = function() {
                         required: true
                     },
                     rpassword: {
-                        required: true
+                        required: true,
+                        equalTo: '#password'
                     },
                     agree: {
                         required: true
