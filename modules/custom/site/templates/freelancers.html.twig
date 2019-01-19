@@ -1,0 +1,1514 @@
+<form id="wizard" action="#" class="form-horizontal">
+    <h3>{{ 'First Step'|t }}</h3>
+    <section>
+        
+        <div class="row">
+            <div class="col-lg-11 intro">
+                {{ '<h2>Join the Pop translation Team</h2>
+                <p>Please fill this form so that we can start your evaluation procedures.<br>
+                This form is designed particularly for freelancers.<br> 
+                If you represent an agency, it will be OK to fill this form in person like a freelancer and then provide additional information about your team such as corporate identity,<br>
+                You will need 10 minutes to completely fill this form out.<br>
+                All the details that you provided herein will be kept confidential. 
+                </p>'|t }}
+            </div>
+            <div class="col-lg-1 social">
+                <a href="{{ url('<current>') }}" class="ti-linkedin"></a>
+                <a href="{{ url('<current>') }}" class="ti-instagram"></a>
+                <a href="{{ url('<current>') }}" class="ti-youtube"></a>
+            </div>
+        </div>
+
+        <h2>{{'Step 1'|t}}</h2>
+
+        <div class="form-group">
+            <div class="col-sm-2 control-label ex-label">{{'Gender'|t}}</div>
+            <div class="col-sm-10">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="gender" value="Female" checked="{{'Female'|t}}">
+                    <div class="state">
+                        <label>{{'Female'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="gender" value="{{'Male'|t}}">
+                    <div class="state">
+                        <label>{{'Male'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="dob" class="col-sm-2 control-label">{{'Date of birth'|t}}</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control input-lg" id="dob" name="dob" placeholder="{{'Date of birth'|t}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="address" class="col-sm-2 control-label">{{'Address'|t}}</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control input-lg" name="address" id="address" placeholder="{{'Address'|t}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="city" class="col-sm-2 control-label">{{'City'|t}}</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control input-lg" id="city" name="city" placeholder="{{'City'|t}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="zip" class="col-sm-2 control-label">{{'Zip Code'|t}}</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control input-lg" id="zip" name="zip" placeholder="{{'Zip Code'|t}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="country" class="col-sm-2 control-label">{{'Country'|t}}</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control input-lg" id="country" name="country" placeholder="{{'Country'|t}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="work" class="col-sm-2 control-label">{{'Work phone'|t}}</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control input-lg" id="work" name="work" placeholder="{{'Work phone'|t}}">
+            </div>
+        </div>
+    </section>
+    
+    <h3>{{'Second Step'|t}}</h3>
+    <section>
+        <h2>{{'Step 2'|t}}</h2>
+        <div class="form-group">
+            <div class="col-sm-2 control-label ex-label">{{'I provide the following services:'|t}}</div>
+            <div class="col-sm-3">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="services" value="{{'Translation'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Translation'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="services" value="{{'Transcription'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Transcription'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="services" value="{{'Content creation'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Content creation'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="services" value="{{'Project Management'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Project Management'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="services" value="{{'Proofread'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Proofread'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="services" value="{{'Interpreting'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Interpreting'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-2 control-label ex-label">{{'I am able support the following cat tools:'|t}}</div>
+            <div class="col-sm-3">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="support" value="{{'SDL Trados'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'SDL Trados'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="support" value="{{'Memsource'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Memsource'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="support" value="{{'MemoQ'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'MemoQ'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="support" value="{{'Other'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Other'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">{{'Select known languages'|t}}</label>
+            <div class="col-sm-10">
+              <select class="form-control input-lg" id="lang1" name="language1">
+                <option value="default">1st Language</option>
+                <option value="Arabic">Arabic</option>
+                <option value="Bulgarian">Bulgarian</option>
+                <option value="Classical Arabic">Classical Arabic</option>
+                <option value="Czech">Czech</option>
+                <option value="Czek">Czek</option>
+                <option value="Danish">Danish</option>
+                <option value="Dutch">Dutch</option>
+                <option value="English">English</option>
+                <option value="Estonian">Estonian</option>
+                <option value="Finnish">Finnish</option>
+                <option value="French">French</option>
+                <option value="German">German</option>
+                <option value="Greek">Greek</option>
+                <option value="Hindi">Hindi</option>
+                <option value="Hungarian">Hungarian</option>
+                <option value="Indonesian">Indonesian</option>
+                <option value="Italian">Italian</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Korean">Korean</option>
+                <option value="Lithuanian">Lithuanian</option>
+                <option value="Modern Standard Arabic Arabi">Modern Standard Arabic Arabic</option>
+                <option value="Norwegian">Norwegian</option>
+                <option value="Persian">Persian</option>
+                <option value="Portuguese">Polish</option>
+                <option value="Portuguese">Portuguese</option>
+                <option value="Romanian">Romanian</option>
+                <option value="Russian">Russian</option>
+                <option value="Simplified Chinese">Simplified Chinese</option>
+                <option value="Spanish">Spanish</option>
+                <option value="Swedish">Swedish</option>
+                <option value="Tamil language">Tamil language</option>
+                <option value="Thai">Thai</option>
+                <option value="traditional Chinese">traditional Chinese</option>
+                <option value="Turkish">Turkish</option>
+              </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+              <select class="form-control input-lg" id="lang2" name="language2">
+                <option value="default">2nd language</option>
+                <option value="Arabic">Arabic</option>
+                <option value="Bulgarian">Bulgarian</option>
+                <option value="Classical Arabic">Classical Arabic</option>
+                <option value="Czech">Czech</option>
+                <option value="Czek">Czek</option>
+                <option value="Danish">Danish</option>
+                <option value="Dutch">Dutch</option>
+                <option value="English">English</option>
+                <option value="Estonian">Estonian</option>
+                <option value="Finnish">Finnish</option>
+                <option value="French">French</option>
+                <option value="German">German</option>
+                <option value="Greek">Greek</option>
+                <option value="Hindi">Hindi</option>
+                <option value="Hungarian">Hungarian</option>
+                <option value="Indonesian">Indonesian</option>
+                <option value="Italian">Italian</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Korean">Korean</option>
+                <option value="Lithuanian">Lithuanian</option>
+                <option value="Modern Standard Arabic Arabi">Modern Standard Arabic Arabic</option>
+                <option value="Norwegian">Norwegian</option>
+                <option value="Persian">Persian</option>
+                <option value="Portuguese">Polish</option>
+                <option value="Portuguese">Portuguese</option>
+                <option value="Romanian">Romanian</option>
+                <option value="Russian">Russian</option>
+                <option value="Simplified Chinese">Simplified Chinese</option>
+                <option value="Spanish">Spanish</option>
+                <option value="Swedish">Swedish</option>
+                <option value="Tamil language">Tamil language</option>
+                <option value="Thai">Thai</option>
+                <option value="traditional Chinese">traditional Chinese</option>
+                <option value="Turkish">Turkish</option>
+              </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+              <select class="form-control input-lg" id="lang3" name="language3">
+                <option value="default">Select a language</option>
+                <option value="Arabic">Arabic</option>
+                <option value="Bulgarian">Bulgarian</option>
+                <option value="Classical Arabic">Classical Arabic</option>
+                <option value="Czech">Czech</option>
+                <option value="Czek">Czek</option>
+                <option value="Danish">Danish</option>
+                <option value="Dutch">Dutch</option>
+                <option value="English">English</option>
+                <option value="Estonian">Estonian</option>
+                <option value="Finnish">Finnish</option>
+                <option value="French">French</option>
+                <option value="German">German</option>
+                <option value="Greek">Greek</option>
+                <option value="Hindi">Hindi</option>
+                <option value="Hungarian">Hungarian</option>
+                <option value="Indonesian">Indonesian</option>
+                <option value="Italian">Italian</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Korean">Korean</option>
+                <option value="Lithuanian">Lithuanian</option>
+                <option value="Modern Standard Arabic Arabi">Modern Standard Arabic Arabic</option>
+                <option value="Norwegian">Norwegian</option>
+                <option value="Persian">Persian</option>
+                <option value="Portuguese">Polish</option>
+                <option value="Portuguese">Portuguese</option>
+                <option value="Romanian">Romanian</option>
+                <option value="Russian">Russian</option>
+                <option value="Simplified Chinese">Simplified Chinese</option>
+                <option value="Spanish">Spanish</option>
+                <option value="Swedish">Swedish</option>
+                <option value="Tamil language">Tamil language</option>
+                <option value="Thai">Thai</option>
+                <option value="traditional Chinese">traditional Chinese</option>
+                <option value="Turkish">Turkish</option>
+              </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+              <select class="form-control input-lg" id="lang4" name="language4">
+                <option value="default">Select a language</option>
+                <option value="Arabic">Arabic</option>
+                <option value="Bulgarian">Bulgarian</option>
+                <option value="Classical Arabic">Classical Arabic</option>
+                <option value="Czech">Czech</option>
+                <option value="Czek">Czek</option>
+                <option value="Danish">Danish</option>
+                <option value="Dutch">Dutch</option>
+                <option value="English">English</option>
+                <option value="Estonian">Estonian</option>
+                <option value="Finnish">Finnish</option>
+                <option value="French">French</option>
+                <option value="German">German</option>
+                <option value="Greek">Greek</option>
+                <option value="Hindi">Hindi</option>
+                <option value="Hungarian">Hungarian</option>
+                <option value="Indonesian">Indonesian</option>
+                <option value="Italian">Italian</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Korean">Korean</option>
+                <option value="Lithuanian">Lithuanian</option>
+                <option value="Modern Standard Arabic Arabi">Modern Standard Arabic Arabic</option>
+                <option value="Norwegian">Norwegian</option>
+                <option value="Persian">Persian</option>
+                <option value="Portuguese">Polish</option>
+                <option value="Portuguese">Portuguese</option>
+                <option value="Romanian">Romanian</option>
+                <option value="Russian">Russian</option>
+                <option value="Simplified Chinese">Simplified Chinese</option>
+                <option value="Spanish">Spanish</option>
+                <option value="Swedish">Swedish</option>
+                <option value="Tamil language">Tamil language</option>
+                <option value="Thai">Thai</option>
+                <option value="traditional Chinese">traditional Chinese</option>
+                <option value="Turkish">Turkish</option>
+              </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-2 control-label ex-label">{{'I have been working as freelance translator for:'|t}}</div>
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="radio1" value="{{'1-2 years'|t}}">
+                    <div class="state">
+                        <label>{{'1-2 years'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="radio1" value="{{'5-10 years'|t}}">
+                    <div class="state">
+                        <label>{{'5-10 years'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="radio1" value="{{'3-5 years'|t}}">
+                    <div class="state">
+                        <label>{{'3-5 years'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="radio1" value="{{'More than 10 years'|t}}">
+                    <div class="state">
+                        <label>{{'More than 10 years'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-2 control-label ex-label">{{'My working hours:'|t}}</div>
+            <div class="col-sm-3">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="workinghours" value="{{'Full-time'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Full-time'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="workinghours" value="{{'Including weekend'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Including weekend'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="workinghours" value="{{'Part-time'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Part-time'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <h3>{{'Third Step'|t}}</h3>
+    <section>
+        <h2>{{'Step 3'|t}}</h2>
+        
+        <h4>{{'I define the concept of « quality by the following terms:'|t}}</h4>
+
+        <div class="form-group">
+            <div class="col-sm-3 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="quality" value="{{'Accuracy'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Accuracy'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="quality" value="{{'Fluency'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Fluency'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="quality" value="{{'Completeness'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Completeness'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="quality" value="{{'Delivery on time'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Delivery on time'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h4>{{'I consider and apply the following procedures:'|t}}</h4>
+
+        <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="procedures" value="{{'Always reread after my translation has finished'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Always reread after my translation has finished'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="procedures" value='{{'Run "MS spellchecker" through my translation'|t}}'>
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Run “MS spellchecker” through my translation'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="procedures" value='{{'Take advantage of "Quality Verification Tools" such XBench, Tag Editor F8 etc.'|t}}'>
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Take advantage of "Quality Verification Tools" such XBench, Tag Editor F8 etc.'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="procedures" value="{{'Take advantage of Multiterm, term lists etc.'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Take advantage of Multiterm, term lists etc.'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="procedures" value="{{'Research on the web, reference files, previous translation memories'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Research on the web, reference files, previous translation memories'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="procedures" value="{{'Carefully follow the internal or external instructions'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Carefully follow the internal or external instructions'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h4>{{'Involvement'|t}}</h4>
+
+        <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-2">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="involvement" value="{{'I always carry out the translation myself'|t}}">
+                    <div class="state">
+                        <label>{{'I always carry out the translation myself'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="involvement" value="{{'I have the translation carried out by freelancer translators'|t}}">
+                    <div class="state">
+                        <label>{{'I have the translation carried out by freelancer translators'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="involvement" value="{{'Sometimes I carry it out myself and sometimes it is completed by other freelancer translators'|t}}">
+                    <div class="state">
+                        <label>{{'Sometimes I carry it out myself and sometimes it is completed by other freelancer translators'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <h3>{{'Forth Step'|t}}</h3>
+    <section>
+        <h2>{{'Step 4'|t}}</h2>
+        {{'<h4>Please mark only 10 boxes of your professional fields:<br>
+        We need to know which fields you think you are best (3 = professional level), second best (2 = training level) and third best ( = interest level). We will consider these levels when any relevant project comes onto our agenda. 
+        </h4>'|t}}
+
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'Law: codes, contracts, article of associations etc.'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Law: codes, contracts, article of associations etc.'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p1" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p1" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p1" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'Commerce: economics, finance, banking, insurance etc.'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Commerce: economics, finance, banking, insurance etc.'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p2" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p2" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p2" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'Management: business admin, marketing, hr, crm, pr'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Management: business admin, marketing, hr, crm, pr'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p3" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p3" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p3" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'Techniques: mechanical engineering, tools and machinery'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Techniques: mechanical engineering, tools and machinery'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p4" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p4" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p4" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'Techniques: electrics, electronics, devices'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Techniques: electrics, electronics, devices'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p5" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p5" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p5" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                       <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'Techniques: computer, telecommunication, hardware, devices'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Techniques: computer, telecommunication, hardware, devices'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p6" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p6" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p6" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'Techniques: internet technologies, software'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Techniques: internet technologies, software'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p7" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p7" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p7" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'Techniques: maritime business, ships, transportation'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Techniques: maritime business, ships, transportation'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p8" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p8" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p8" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'Techniques: infrastructure, construction, architecture'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Techniques: infrastructure, construction, architecture'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p9" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p9" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p9" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'Techniques: land transportation means, logistics'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Techniques: land transportation means, logistics'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p10" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p10" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p10" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'Techniques: databases of the scopes specified herein'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Techniques: databases of the scopes specified herein'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p11" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p11" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p11" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'Localization: video, browser, mobile games'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Localization: video, browser, mobile games'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p12" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p12" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p12" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'Localization: software, script, help'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Localization: software, script, help'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p13" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p13" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p13" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'Localization: website, new generation websites'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Localization: website, new generation websites'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p14" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p14" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p14" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'Localization: brochures, white papers,'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Localization: brochures, white papers,'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p15" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p15" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p15" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'Social sciences: history, sociology, politics etc.'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Social sciences: history, sociology, politics etc.'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p16" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p16" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p16" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'International organs: EU, government, tenders,'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'International organs: EU, government, tenders,'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p17" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p17" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p17" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'Chemistry: biochemistry, petro-chemicals etc'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Chemistry: biochemistry, petro-chemicals etc'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p18" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p18" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p18" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'Medicine: Med. technologies, pharmacology, dentistry'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Medicine: Med. technologies, pharmacology, dentistry'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p19" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p19" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p19" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'Literature: Novel, story, scripts for cinema, theatre'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Literature: Novel, story, scripts for cinema, theatre'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p20" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p20" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p20" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'Patents of the scopes specified herein'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Patents of the scopes specified herein'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p21" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p21" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p21" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'Scientific reports, studies, articles, text, news etc.'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Scientific reports, studies, articles, text, news etc.'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p22" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p22" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p22" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'Localization: Video Game'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Localization: Video Game'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p23" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p23" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p23" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-7 col-sm-offset-2">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="professional" value="{{'Subtitles'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Subtitles'|t}}</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-3">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p24" value="{{'1'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'1'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p24" value="{{'2'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'2'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="p24" value="{{'3'|t}}">
+                    <div class="state p-primary">
+                        <label>{{'3'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <h3>{{'Sixth Step'|t}}</h3>
+    <section>
+        <h2>{{'Step 5'|t}}</h2>
+
+        <div class="form-group">
+            <div class="col-sm-3 control-label ex-label">{{'Short test translation free of charge?'|t}}</div>
+            <div class="col-sm-9">
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="freecharge" value="Yes">
+                    <div class="state">
+                        <label>{{'Yes'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-default p-round p-bigger">
+                    <input type="radio" name="freecharge" value="No">
+                    <div class="state">
+                        <label>{{'No'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-3 control-label ex-label">{{'I accept:'|t}}</div>
+            <div class="col-sm-9">
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="accept" value="{{'Bank Transfer'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Bank Transfer'|t}}</label>
+                    </div>
+                </div>
+
+                <div class="pretty p-icon p-curve p-bigger">
+                    <input type="checkbox" name="accept" value="{{'Paypal'|t}}">
+                    <div class="state">
+                        <i class="icon ti-close"></i>
+                        <label>{{'Paypal'|t}}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="profile" class="col-sm-3 control-label">{{'Your Proz profile'|t}}</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control input-lg" name="profile" id="profile" placeholder="{{'Your Proz profile'|t}}">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <div class="cv-upload col-sm-offset-2">
+                <span>{{'Upload your CV file.'|t}}</span>
+                <!--  -->
+                <div class="table table-striped" class="files" id="previews">
+                    <div id="template" class="file-row">
+                        <!-- This is used as the file preview template -->
+                        <div>
+                            <span class="preview"><img data-dz-thumbnail /></span>
+                        </div>
+                        <div>
+                            <p class="name" data-dz-name></p>
+                            <strong class="error text-danger" data-dz-errormessage></strong>
+                        </div>
+                        <div>
+                            <p class="size" data-dz-size></p>
+                            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                            </div>
+                        </div>
+                        <input type="hidden" class="uploaded-file" name="uploadedfile" value="">
+                    </div>
+                </div>
+                <!--  -->
+            </div>
+        </div>
+
+        <h4>{{'At least, two references are required to complete your data:'|t}}</h4>
+
+        <div class="form-group">
+            <label for="company1" class="col-sm-3 control-label">{{'Company#1'|t}}</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control input-lg" name="company1" id="company1" placeholder="{{'Company#1'|t}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="contact1" class="col-sm-3 control-label">{{'Contact#1'|t}}</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control input-lg" name="contact1" id="contact1" placeholder="{{'Contact#1'|t}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email1" class="col-sm-3 control-label">{{'Email#1'|t}}</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control input-lg" name="email1" id="email1" placeholder="{{'Email#1'|t}}">
+            </div>
+        </div>
+        
+        <br>
+
+        <div class="form-group">
+            <label for="company2" class="col-sm-3 control-label">{{'Company#2'|t}}</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control input-lg" name="company2" id="company2" placeholder="{{'Company#1'|t}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="contact2" class="col-sm-3 control-label">{{'Contact#2'|t}}</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control input-lg" name="contact2" id="contact1" placeholder="{{'Contact#2'|t}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email3" class="col-sm-3 control-label">{{'Email#3'|t}}</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control input-lg" name="email2" id="email1" placeholder="{{'Email#3'|t}}">
+            </div>
+        </div>
+    </section>
+                        
+    <h3>{{'Seventh Step'|t}}</h3>
+    <section>
+        <div class="thankyou">
+            <img src="/themes/photo/img/hand2.png" alt="">
+            {{'<p>We are happy to say that you have already been included to our private vendor database, but not classified as Active Member yet.</p><p>Hopefully, we will contact to go even further if any project comes on board with best match of your rates and <p>qualifications!</p><p>Time to time, you may receive group e-mails sent to limited number of vendors for opportunity projects.</p><p>Note that you cannot modify your data once entered herein.</p><p>Good Luck and Best Wishes,</p><p>Pop translation team</p>'|t}}
+        </div>
+    </section>
+</form>

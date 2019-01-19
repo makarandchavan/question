@@ -92,8 +92,10 @@ var SnippetLogin = function() {
             btn.addClass('m-loader m-loader--right m-loader--light').attr('disabled', true);
 
             form.ajaxSubmit({
-                url: '',
+                url: '/submit/login',
                 success: function(response, status, xhr, $form) {
+                    console.log(response);
+                    return false;
                 	// similate 2s delay
                 	setTimeout(function() {
 	                    btn.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);

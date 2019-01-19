@@ -1,0 +1,38 @@
+site.home_form: # This is a route name.
+  path: '/submit/login'
+  defaults:
+    _controller: '\Drupal\site\Controller\SiteController::handleLogin'
+    _title: 'User login'
+  requirements:
+    _permission: 'access content'
+
+site.freelance_form: # This is a route name.
+  path: '/submit/freelance'
+  defaults:
+    _controller: '\Drupal\site\Controller\SiteController::handleFreelance'
+    _title: 'Thank You'
+  requirements:
+    _permission: 'access content'
+site.contact_form: # This is a route name.
+  path: '/submit/contact'
+  defaults:
+    _controller: '\Drupal\site\Controller\SiteController::handleContact'
+    _title: 'Thank You'
+  requirements:
+    _permission: 'access content'
+
+site.upload: # This is a route name.
+  path: '/uploadfile'
+  defaults:
+    _controller: '\Drupal\site\Controller\SiteController::uploadFile'
+    _title: ''
+  requirements:
+    _permission: 'access content'
+
+site.freelancers: # This is a route name.
+  path: '/freelancers'
+  defaults:
+    _controller: '\Drupal\site\Controller\SiteController::freelancers'
+    _title: ''
+  requirements:
+    _permission: 'access content'

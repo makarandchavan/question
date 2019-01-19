@@ -1,0 +1,87 @@
+<?php
+
+/**
+ * @file
+ * Implements hook_form_alter().
+ */
+
+function site_form_alter(&$form, $form_state, $form_id) {
+  // Look for any form provided by the contact module.
+  if (strpos($form_id, 'contact_message_') !== FALSE) {
+    // Disables preview button.
+    $form['actions']['preview']['#access'] = FALSE;
+    $form['actions']['submit']['#value'] = t('Envoi');
+    $form['mail']['#title'] = t('Email');
+  }
+}
+
+/**
+* Implements hook_mail().
+*/
+function site_mail($key, &$message, $params) {
+ $options = array(
+   'langcode' => $message['langcode'],
+ );
+  switch ($key) {
+    case 'quote_mail_admin':
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['headers']['Reply-To'] = 'no-reply@poptranslation.com';
+      $message['subject'] = t('Quote request recevied', array(), $options);
+      $message['body'][] = $params['message'];
+      // Add attachment when available.
+  	  if (isset($params['attachment'])) {
+  	    $message['params']['attachments'][] = $params['attachment'];
+  	  }
+    break;
+    case 'quote_mail':
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['headers']['Reply-To'] = 'no-reply@poptranslation.com';
+      $message['subject'] = t('Thank you', array(), $options);
+      $message['body'][] = $params['message'];
+      // Add attachment when available.
+  	  if (isset($params['attachment'])) {
+  	    $message['params']['attachments'][] = $params['attachment'];
+  	  }
+    break;
+    case 'free_mail_admin':
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['headers']['Reply-To'] = 'no-reply@poptranslation.com';
+      $message['subject'] = t('Freelancer recevied', array(), $options);
+      $message['body'][] = $params['message'];
+      // Add attachment when available.
+      if (isset($params['attachment'])) {
+        $message['params']['attachments'][] = $params['attachment'];
+      }
+    break;
+    case 'free_mail':
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['headers']['Reply-To'] = 'no-reply@poptranslation.com';
+      $message['subject'] = t('Thank you', array(), $options);
+      $message['body'][] = $params['message'];
+      // Add attachment when available.
+      if (isset($params['attachment'])) {
+        $message['params']['attachments'][] = $params['attachment'];
+      }
+    break;
+    case 'contact_mail_admin':
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['headers']['Reply-To'] = 'no-reply@poptranslation.com';
+      $message['subject'] = t('Contact recevied', array(), $options);
+      $message['body'][] = $params['message'];
+    break;
+    case 'contact_mail':
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['headers']['Reply-To'] = 'no-reply@poptranslation.com';
+      $message['subject'] = t('Thank you', array(), $options);
+      $message['body'][] = $params['message'];
+    break;
+  }
+}
+
+function site_theme($existing, $type, $theme, $path) {
+  return [
+    'freelancers' => [
+      'variables' => ['site' => NULL],
+    ],
+  ];
+}
