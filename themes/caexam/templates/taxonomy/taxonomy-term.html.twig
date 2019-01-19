@@ -1,0 +1,58 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a taxonomy term.
+ *
+ * Available variables:
+ * - url: URL of the current term.
+ * - name: Name of the current term.
+ * - content: Items for the content of the term (fields and description).
+ *   Use 'content' to print them all, or print a subset such as
+ *   'content.description'. Use the following code to exclude the
+ *   printing of a given child element:
+ *   @code
+ *   {{ content|without('description') }}
+ *   @endcode
+ * - attributes: HTML attributes for the wrapper.
+ * - page: Flag for the full page state.
+ * - term: The taxonomy term entity, including:
+ *   - id: The ID of the taxonomy term.
+ *   - bundle: Machine name of the current vocabulary.
+ * - view_mode: View mode, e.g. 'full', 'teaser', etc.
+ *
+ * @see template_preprocess_taxonomy_term()
+ *
+ * @ingroup themeable
+ */
+#}
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <h1 class="page-title">- {{ name }} -</h1>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 content-copy">
+                {{ custom_desc }}
+            </div>
+        </div>
+    </div>
+</div>
+<div class="images">
+    <div class="container-fluid">
+        {% for items in custom_img_link %}
+            <div class="row">
+                {% if loop.first and term.id != 2 %}
+                    <div class="col-lg-12 col-md-6 pack img-grid no-grid">
+                {% else %}
+                    <div class="col-lg-12 pack img-grid no-grid">
+                {% endif %}
+                    {% for item in items %}
+                        <a href="{{ item.url }}" data-index="{{ item.key }}"><img src="{{ item.img }}"></a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

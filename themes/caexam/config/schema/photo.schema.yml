@@ -1,0 +1,5 @@
+# Schema for the theme setting configuration file of the photo theme.
+
+photo.settings:
+  type: theme_settings
+  label: 'Photo settings'

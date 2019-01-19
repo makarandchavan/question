@@ -1,0 +1,16 @@
+core: 8.x
+type: theme
+
+name: 'CAEXAM'
+description: 'CAEXAM custom theme.'
+package: 'Bootstrap'
+
+regions:
+  header: 'header'
+  hero: 'hero'
+  content: 'content'
+  services: 'services'
+  footer: 'footer'
+
+libraries:
+  - 'caexamss/global-styling'

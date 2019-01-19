@@ -1,0 +1,48 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a menu.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ *
+ * @ingroup templates
+ *
+ * Define a custom macro that will render all menu trees.
+ */
+#}
+{% if items %}
+  <div class="col-lg-2 col-xs-3">
+      <div id="mySidenav" class="sidenav">
+          <a href="#" class="closebtn">&times;</a>
+          {% for item in items %}
+            {%
+              set item_classes = [
+                item.is_expanded and item.below ? 'expanded',
+                item.is_expanded and menu_level == 0 and item.below ? 'dropdown',
+                item.in_active_trail ? 'active',
+              ]
+            %}
+            {% if 'http' in item.url|render|render %}  
+              <a href="{{ item.url }}" class="{{ item_classes }}" target="_blank">{{ item.title }}</a>
+            {% else %}
+              <a href="{{ item.url }}" class="{{ item_classes }}">{{ item.title }}</a>
+            {% endif %}
+          {% endfor %}
+      </div>
+
+      <div class="open">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+      </div>
+  </div>
+{% endif %}
+

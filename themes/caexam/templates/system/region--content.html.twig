@@ -1,0 +1,84 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region div.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_region()
+ */
+#}
+{% if content and path_arg == 'freelancers' %}
+<div class="cd-panel cd-panel--from-right js-cd-panel-main">
+    <header class="cd-panel__header">
+        <a href="#0" class="cd-panel__close js-cd-close">{{ 'Close'|t }}</a>
+    </header>
+
+    <div class="cd-panel__container">
+        <div class="cd-panel__content">
+            <div class="container-fluid">
+                <div class="row">
+  					{{ content }}
+			  	</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% elseif content and path_arg == 'contact' %}
+<div class="container-fluid hero-area">
+  <div class="row inner contact">
+      <div class="col-lg-12 col-xs-12 col-md-4">
+          <div class="form-outer">
+              <div class="quote-form-wrapper">
+                  <form action="/contact" class="" id="contact">
+                      <h4>{{ 'CONTACTEZ-NOUS'|t }}</h4>
+
+                      <div class="form-group">
+                          <input type="text" class="form-control" id="name" name="name" placeholder="{{ 'Votre nom'|t }}">
+                      </div>
+                      <div class="form-group">
+                          <input type="email" class="form-control" id="email" name="email" placeholder="{{ 'Votre email'|t }}">
+                      </div>
+                      <div class="form-group">
+                          <input type="text" class="form-control" id="entreprise" name="entreprise" placeholder="{{ 'Votre entreprise'|t }}">
+                      </div>
+                      <div class="form-group">
+                          <textarea class="form-control" rows="3" name="message" placeholder="{{ 'Pouvez-vous nous préciser votre demande ?'|t }}"></textarea>
+                      </div>
+
+                      <div class="form-group">
+                          <button type="submit" id="submitContact" class="btn btn-default" disabled="disabled">{{ 'Envoyer'|t }}</button>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% elseif content and node_type == 'article' %}
+<div class="container details">
+  <div class="row">
+    {{ content }}
+  </div>
+</div>
+{% elseif content and node_type == 'page' %}
+<div class="container-fluid dark-grey">
+  <div class="row inner legal">
+    {{ content }}
+  </div>
+</div>
+{% elseif content and node_type == 'about' %}
+  {{ content }}
+{% else %}
+<div class="container-fluid white-area">
+  <div class="row inner">
+  	{{ content }}
+  </div>
+</div>
+{% endif %}

@@ -1,0 +1,38 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a region.
+ *
+ * Available variables:
+ * - content: The content for this region, typically blocks.
+ * - attributes: HTML attributes for the region div.
+ * - region: The name of the region variable as defined in the theme's
+ *   .info.yml file.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_region()
+ */
+#}
+{% if content and path_arg == 'node' %}
+<div class="container-fluid hero-area quote">
+  <div class="row inner">
+    <div class="col-lg-12">
+      <div class="form-outer">
+  	     {{ content }}
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="container-fluid hero-area">
+  <div class="row inner freelancers">
+  	{{ content }}
+  	<!-- <div class="col-lg-6"></div> -->
+
+    <!-- <div class="col-lg-3 circle_banner">
+        <img src="/themes/photo/img/banner_4.png" alt="">
+    </div> -->
+  </div>
+</div>
+{% endif %}
