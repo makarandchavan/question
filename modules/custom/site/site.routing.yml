@@ -7,9 +7,9 @@ site.home_form: # This is a route name.
     _permission: 'access content'
 
 site.freelance_form: # This is a route name.
-  path: '/submit/freelance'
+  path: '/submit/register'
   defaults:
-    _controller: '\Drupal\site\Controller\SiteController::handleFreelance'
+    _controller: '\Drupal\site\Controller\SiteController::handleRegister'
     _title: 'Thank You'
   requirements:
     _permission: 'access content'

@@ -1,5 +1,9 @@
 <?php
 
+use Drupal\email_confirmer\EmailConfirmationInterface;
+use Drupal\Core\Url;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
 /**
  * @file
  * Implements hook_form_alter().
@@ -84,4 +88,30 @@ function site_theme($existing, $type, $theme, $path) {
       'variables' => ['site' => NULL],
     ],
   ];
+}
+
+function site_email_confirmer($op, EmailConfirmationInterface $confirmation) {
+  if ($op == 'confirm') {
+    // Activate the user.
+    $users = \Drupal::entityTypeManager()->getStorage('user')->loadByProperties(['mail' => $confirmation->getEmail()]);
+    $user = reset($users);
+    $user->activate();
+
+    // Save user account.
+    $user->save();
+
+    // Logs in user.
+    user_login_finalize($user);
+
+    $response = new RedirectResponse(Url::fromUserInput('/user/' . $user->id() . '/edit')->toString());
+    $response->send();
+  }
+}
+
+
+function site_user_delete(Drupal\Core\Entity\EntityInterface $entity) {
+  // Delete the entity's entry from a fictional table of all entities.
+  db_delete('email_confirmer_confirmation')
+    ->condition('email', $entity->getEmail())
+    ->execute();
 }

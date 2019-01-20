@@ -94,13 +94,15 @@ var SnippetLogin = function() {
             form.ajaxSubmit({
                 url: '/submit/login',
                 success: function(response, status, xhr, $form) {
-                    console.log(response);
-                    return false;
                 	// similate 2s delay
-                	setTimeout(function() {
-	                    btn.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
-	                    showErrorMsg(form, 'danger', 'Incorrect username or password. Please try again.');
-                    }, 2000);
+                    if(response == '0') {
+                        btn.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
+                        showErrorMsg(form, 'danger', 'Incorrect username or password. Please try again.');
+                    }
+                    else {
+                        location.href = response;
+                    }
+                    return false;
                 }
             });
         });
@@ -151,22 +153,25 @@ var SnippetLogin = function() {
             btn.addClass('m-loader m-loader--right m-loader--light').attr('disabled', true);
 
             form.ajaxSubmit({
-                url: '',
+                url: '/submit/register',
                 success: function(response, status, xhr, $form) {
-                	// similate 2s delay
-                	setTimeout(function() {
-	                    btn.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
-	                    form.clearForm();
-	                    form.validate().resetForm();
+                    if(response == '1') {
+                        btn.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
+                        form.clearForm();
+                        form.validate().resetForm();
 
-	                    // display signup form
-	                    displaySignInForm();
-	                    var signInForm = login.find('.m-login__signin form');
-	                    signInForm.clearForm();
-	                    signInForm.validate().resetForm();
+                        // display signup form
+                        displaySignInForm();
+                        var signInForm = login.find('.m-login__signin form');
+                        signInForm.clearForm();
+                        signInForm.validate().resetForm();
 
-	                    showErrorMsg(signInForm, 'success', 'Thank you. To complete your registration please check your email.');
-	                }, 2000);
+                        showErrorMsg(signInForm, 'success', 'Thank you. To complete your registration please check your email.');
+                    }
+                    else {
+                        btn.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
+                        showErrorMsg(form, 'danger', 'Email ID is already registered!');
+                    }
                 }
             });
         });
@@ -231,4 +236,8 @@ var SnippetLogin = function() {
 //== Class Initialization
 jQuery(document).ready(function() {
     SnippetLogin.init();
+
+    if(jQuery('#email-confirmer-response').length > 0) {
+        jQuery('#email-confirmer-response').submit();
+    }
 });
