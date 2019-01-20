@@ -93,3 +93,14 @@ function caexam_preprocess_node(&$vars) {
   $statistics = statistics_get($vars['node']->id());
   $vars['node_stats'] = \Drupal::translation()->formatPlural($statistics['totalcount'], '1 view', '@count');
 }
+
+ /**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function caexam_theme_suggestions_page_alter(array &$suggestions, array $variables) {
+  $request = \Drupal::routeMatch()->getRouteObject();
+  $path_args = explode('/', $request->getPath());
+  if (\Drupal::currentUser()->isAuthenticated() && in_array('user', $path_args) && in_array('edit', $path_args)) {
+    $suggestions[] = 'page__user__profile__edit';
+  }
+}
