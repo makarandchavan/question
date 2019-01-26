@@ -1,6 +1,6 @@
 <?php
 
-
+use Drupal\user\Entity\User;
 
 function caexam_preprocess_taxonomy_term(&$vars) {
   $vars['custom_desc'] = $vars['content']['description'];
@@ -87,6 +87,26 @@ function caexam_preprocess_page(&$vars) {
   // Retrieve an array which contains the path pieces.
   $pathArgs = explode('/', $current_path);
   $vars['path_arg'] = $pathArgs[1];
+
+  if (\Drupal::currentUser()->isAuthenticated() && in_array('user', $pathArgs) && in_array('edit', $pathArgs)) {
+    $account = User::load(\Drupal::currentUser()->id());
+    $vars['fname'] = $account->get('field_first_name')->value;
+    $vars['lname'] = $account->get('field_last_name')->value;
+    $vars['mail'] = $account->get('mail')->value;
+    $vars['phone'] = $account->get('field_mobile_number')->value;
+    $vars['dob'] = $account->get('field_date_of_birth')->value;
+    $vars['gender'] = $account->get('field_gender')->value;
+    $vars['course'] = $account->get('field_course')->value;
+    $vars['pincode'] = $account->get('field_pincode')->value;
+    $vars['city'] = $account->get('field_city')->value;
+    $vars['state'] = $account->get('field_state')->value;
+    $vars['role'] = $account->getRoles();
+
+    if (in_array('professor', $vars['role'])) {
+      $vars['work'] = $account->get('field_work')->value;
+      $vars['subjects'] = $account->get('field_subjects')->value;
+    }
+  }
 }
 
 function caexam_preprocess_node(&$vars) {

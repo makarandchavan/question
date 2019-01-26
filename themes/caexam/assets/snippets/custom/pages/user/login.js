@@ -221,6 +221,31 @@ var SnippetLogin = function() {
         });
     }
 
+    var handleProfileFormSubmit = function() {
+        $('#submit-profile').click(function(e) {
+            e.preventDefault();
+
+            var btn = $(this);
+            var form = $(this).closest('form');
+
+            btn.addClass('m-loader m-loader--right m-loader--light').attr('disabled', true);
+
+            form.ajaxSubmit({
+                url: '/submit/profile',
+                success: function(response, status, xhr, $form) {
+                    if(response == '1') {
+                        btn.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
+                        showErrorMsg(form, 'success', 'Settings successfully saved.');
+                    }
+                    else {
+                        btn.removeClass('m-loader m-loader--right m-loader--light').attr('disabled', false);
+                        showErrorMsg(form, 'danger', 'Email ID is already registered!');
+                    }
+                }
+            });
+        });
+    }
+
     //== Public Functions
     return {
         // public functions
@@ -229,6 +254,7 @@ var SnippetLogin = function() {
             handleSignInFormSubmit();
             handleSignUpFormSubmit();
             handleForgetPasswordFormSubmit();
+            handleProfileFormSubmit();
         }
     };
 }();

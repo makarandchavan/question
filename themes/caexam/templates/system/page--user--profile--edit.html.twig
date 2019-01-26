@@ -86,7 +86,7 @@
                       <span class="m-nav__link-icon m-topbar__usericon  m--hide">
                         <span class="m-nav__link-icon-wrapper"><i class="flaticon-user-ok"></i></span>
                       </span>
-                      <span class="m-topbar__username m--hide">{{ user.field_first_name }}</span>
+                      <span class="m-topbar__username m--hide">{{ fname|raw }}</span>
                     </a>
                     <div class="m-dropdown__wrapper">
                       <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
@@ -97,8 +97,8 @@
                               <img src="/themes/caexam/assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless" alt="" />
                             </div>
                             <div class="m-card-user__details">
-                              <span class="m-card-user__name m--font-weight-500">{{ user.field_first_name }} {{ user.field_last_name }}</span>
-                              <a href="" class="m-card-user__email m--font-weight-300 m-link">{{ user.mail }}</a>
+                              <span class="m-card-user__name m--font-weight-500">{{ fname|raw }} {{ lname|raw }}</span>
+                              <a href="" class="m-card-user__email m--font-weight-300 m-link">{{ mail|raw }}</a>
                             </div>
                           </div>
                         </div>
@@ -231,12 +231,12 @@
                   </div>
                   <div class="m-card-profile__pic">
                     <div class="m-card-profile__pic-wrapper">
-                      <img src="assets/app/media/img/users/user4.jpg" alt="" />
+                      <img src="/themes/caexam/assets/app/media/img/users/user4.jpg" alt="" />
                     </div>
                   </div>
                   <div class="m-card-profile__details">
-                    <span class="m-card-profile__name">Mark Andre</span>
-                    <a href="" class="m-card-profile__email m-link">mark.andre@gmail.com</a>
+                    <span class="m-card-profile__name">{{ fname|raw }} {{ lname|raw }}</span>
+                    <a href="" class="m-card-profile__email m-link">{{ mail|raw }}</a>
                   </div>
                 </div>
                 <div class="m-portlet__body-separator"></div>
@@ -259,7 +259,7 @@
               </div>
               <div class="tab-content">
                 <div class="tab-pane active" id="m_user_profile_tab_1">
-                  <form class="m-form m-form--fit m-form--label-align-right">
+                  <form id="profile-form" method="post" action="/submit/profile" class="m-form m-form--fit m-form--label-align-right">
                     <div class="m-portlet__body">
                       <div class="form-group m-form__group m--margin-top-10 m--hide">
                         <div class="alert m-alert m-alert--default" role="alert">
@@ -274,88 +274,90 @@
                       <div class="form-group m-form__group row">
                         <label for="example-text-input" class="col-2 col-form-label">First Name</label>
                         <div class="col-7">
-                          <input class="form-control m-input" type="text" value="Mark">
+                          <input class="form-control m-input" type="text" name="fname" value="{{ fname|raw }}">
                         </div>
                       </div>
                       <div class="form-group m-form__group row">
                         <label for="example-text-input" class="col-2 col-form-label">Last Name</label>
                         <div class="col-7">
-                          <input class="form-control m-input" type="text" value="Andre">
+                          <input class="form-control m-input" type="text" name="lname" value="{{ lname|raw }}">
                         </div>
                       </div>
                       <div class="form-group m-form__group row">
                         <label for="example-text-input" class="col-2 col-form-label">Mobile No</label>
                         <div class="col-7">
-                          <input class="form-control m-input" type="text" value="+456669067890">
+                          <input class="form-control m-input" type="text" name="phone" value="{{ phone|raw }}">
                         </div>
                       </div>
                       <div class="form-group m-form__group row">
                         <label for="example-text-input" class="col-2 col-form-label">Email ID</label>
                         <div class="col-7">
-                          <input class="form-control m-input" type="text" value="mark.andre@gmail.com">
+                          <input class="form-control m-input" type="text" name="mail" readonly="readonly" value="{{ mail|raw }}">
                         </div>
                       </div>
                       <div class="form-group m-form__group row">
                         <label for="example-text-input" class="col-2 col-form-label">Date of Birth</label>
                         <div class="col-7">
-                          <input type="text" class="form-control m-input" id="m_datepicker" readonly="" placeholder="Date of Birth">
+                          <input type="text" class="form-control m-input" id="m_datepicker" name="dob" value="{{ dob|raw }}" readonly="" placeholder="Date of Birth">
                         </div>
                       </div>
                       <div class="form-group m-form__group row">
                         <label for="example-text-input" class="col-2 col-form-label">Gender</label>
                         <div class="col-7">
-                          <select class="form-control m-input" name="option" aria-describedby="option-error" aria-invalid="true">
+                          <select class="form-control m-input" name="gender" aria-describedby="option-error" aria-invalid="true">
                             <option value="">Gender</option>
-                            <option>Male</option>
-                            <option>Female</option>
+                            <option value="Male" {% if 'Male' == gender|raw %} selected {% endif %}>Male</option>
+                            <option value="Female" {% if 'Female' == gender|raw %} selected {% endif %}>Female</option>
                           </select>
                         </div>
                       </div>
                       <div class="form-group m-form__group row">
                         <label for="example-text-input" class="col-2 col-form-label">Course</label>
                         <div class="col-7">
-                          <select class="form-control m-input" name="option" aria-describedby="option-error" aria-invalid="true">
-                            <option value="">Course</option>
-                            <option value="">Final CA (Old Course)</option>
-                            <option value="">Final CA (New Course)</option>
-                            <option value="">IPCC (Old Course)</option>
-                            <option value="">Intermediate (New Course)</option>
-                            <option value="">CPT (Old Course)</option>
-                            <option value="">Foundation (New Course)</option>
-                            <option value="">Others</option>
+                          <select class="form-control m-input" name="course" aria-describedby="option-error" aria-invalid="true">
+                            <option value="Course" {% if 'Course' == course|raw %} selected {% endif %}>Course</option>
+                            <option value="Final CA (Old Course)" {% if 'Final CA (Old Course)' == course|raw %} selected {% endif %}>Final CA (Old Course)</option>
+                            <option value="Final CA (New Course)" {% if 'Final CA (New Course)' == course|raw %} selected {% endif %}>Final CA (New Course)</option>
+                            <option value="IPCC (Old Course)" {% if 'IPCC (Old Course)' == course|raw %} selected {% endif %}>IPCC (Old Course)</option>
+                            <option value="Intermediate (New Course)" {% if 'Intermediate (New Course)' == course|raw %} selected {% endif %}>Intermediate (New Course)</option>
+                            <option value="CPT (Old Course)" {% if 'CPT (Old Course)' == course|raw %} selected {% endif %}>CPT (Old Course)</option>
+                            <option value="Foundation (New Course)" {% if 'Foundation (New Course)' == course|raw %} selected {% endif %}>Foundation (New Course)</option>
+                            <option value="Others" {% if 'Others' == course|raw %} selected {% endif %}>Others</option>
                           </select>
                         </div>
                       </div>
                       <div class="form-group m-form__group row">
                         <label for="example-text-input" class="col-2 col-form-label">Pincode</label>
                         <div class="col-7">
-                          <input class="form-control m-input" type="text" placeholder="Pincode" name="pin" maxlength="6">
+                          <input class="form-control m-input" type="text" placeholder="Pincode" value="{{ pincode|raw }}" name="pincode" maxlength="6">
                         </div>
                       </div>
                       <div class="form-group m-form__group row">
                         <label for="example-text-input" class="col-2 col-form-label">City</label>
                         <div class="col-7">
-                          <input class="form-control m-input" type="text" placeholder="City" name="city">
+                          <input class="form-control m-input" type="text" placeholder="City" value="{{ city|raw }}" name="city">
                         </div>
                       </div>
                       <div class="form-group m-form__group row">
                         <label for="example-text-input" class="col-2 col-form-label">State</label>
                         <div class="col-7">
-                          <input class="form-control m-input" type="text" placeholder="State">
+                          <input class="form-control m-input" type="text" name="state" value="{{ state|raw }}" placeholder="State">
                         </div>
                       </div>
+                      {% if 'professor' in role %}
                       <div class="form-group m-form__group row">
                         <label for="example-text-input" class="col-2 col-form-label">Name of the Institute where you work/teach/own?</label>
                         <div class="col-7">
-                          <input class="form-control m-input" type="email" placeholder="Name of the Institute where you work/teach/own?" name="institute" autocomplete="off">
+                          <input class="form-control m-input" type="text" value="{{ work|raw }}" placeholder="Name of the Institute where you work/teach/own?" name="work" autocomplete="off">
                         </div>
                       </div>
                       <div class="form-group m-form__group row">
                         <label for="example-text-input" class="col-2 col-form-label">Subjects you specialize in?</label>
                         <div class="col-7">
-                          <input class="form-control m-input" type="email" placeholder="Subjects you specialize in?" name="subjects" autocomplete="off">
+                          <input class="form-control m-input" type="text" value="{{ subjects|raw }}" placeholder="Subjects you specialize in?" name="subjects" autocomplete="off">
                         </div>
                       </div>
+                      {% endif %}
                     </div>
                     <div class="m-portlet__foot m-portlet__foot--fit">
                       <div class="m-form__actions">
@@ -363,7 +365,7 @@
                           <div class="col-2">
                           </div>
                           <div class="col-7">
-                            <button type="reset" class="btn btn-accent m-btn m-btn--air m-btn--custom">Save changes</button>&nbsp;&nbsp;
+                            <button type="submit" id="submit-profile" class="btn btn-accent m-btn m-btn--air m-btn--custom">Save changes</button>&nbsp;&nbsp;
                             <button type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom">Cancel</button>
                           </div>
                         </div>

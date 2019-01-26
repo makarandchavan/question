@@ -27,18 +27,24 @@ class SiteController extends ControllerBase {
   public function handleLogin() {
     global $base_url;
     $mail = $_POST['email'];
+    $password = $_POST['password'];
 
     if(isset($mail)) {
       $users = \Drupal::entityTypeManager()->getStorage('user')->loadByProperties(['mail' => $mail]);
       $user = reset($users);
+       if(!empty($user)) {
+        $username = $user->getUsername();
 
-      if (!empty($user) && $user->isActive()) {
-        user_login_finalize($user);
-        $user_destination = \Drupal::destination()->get();
+        if(!empty($username)) {
+          $uid = \Drupal::service('user.auth')->authenticate($username, $password);
+          $logged_in = User::load($uid);
+          if(!empty($logged_in)) {
+            user_login_finalize($logged_in);
+            $user_destination = \Drupal::destination()->get();
+          }
+        }
       }
       if ($user_destination) {
-        /*$response = new RedirectResponse($user_destination);
-        $response->send();*/
         echo $base_url . '/user/' . $user->id() . '/edit';
       }
       else {
@@ -92,6 +98,45 @@ class SiteController extends ControllerBase {
         // Send confirmation email.
         \Drupal::service('email_confirmer')->confirm($form_values['email']);
       }
+
+      if($result) {
+        echo '1';
+      }
+    }
+    exit;
+  }
+
+  /**
+   * Profile form handle.
+   */
+  public function handleProfile() {
+    $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
+    $form_values = $_POST;
+
+    $user = User::load(\Drupal::currentUser()->id());
+    
+    if(empty($user)) {
+      echo '0';
+    }
+    else {
+      $user->set('field_first_name', $form_values['fname']);
+      $user->set('field_last_name', $form_values['lname']);
+      $user->set('field_mobile_number', $form_values['phone']);
+      $user->set('field_date_of_birth', $form_values['dob']);
+      $user->set('field_gender', $form_values['gender']);
+      $user->set('field_course', $form_values['course']);
+      $user->set('field_pincode', $form_values['pincode']);
+      $user->set('field_city', $form_values['city']);
+      $user->set('field_state', $form_values['state']);
+
+      if (in_array('professor', $user->getRoles())) {
+        $user->set('field_work', $form_values['work']);
+        $user->set('field_subjects', $form_values['subjects']);
+      }
+
+      // Save user account.
+      $result = $user->save();
 
       if($result) {
         echo '1';
@@ -195,3 +240,4 @@ class SiteController extends ControllerBase {
     }
   }
 }
+

@@ -14,12 +14,12 @@ site.freelance_form: # This is a route name.
   requirements:
     _permission: 'access content'
 site.contact_form: # This is a route name.
-  path: '/submit/contact'
+  path: '/submit/profile'
   defaults:
-    _controller: '\Drupal\site\Controller\SiteController::handleContact'
+    _controller: '\Drupal\site\Controller\SiteController::handleProfile'
     _title: 'Thank You'
   requirements:
-    _permission: 'access content'
+    _role: 'authenticated'
 
 site.upload: # This is a route name.
   path: '/uploadfile'
