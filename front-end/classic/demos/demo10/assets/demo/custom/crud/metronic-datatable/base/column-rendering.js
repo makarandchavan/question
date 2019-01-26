@@ -25,8 +25,9 @@ var DatatableColumnRenderingDemo = function() {
       layout: {
         theme: 'default', // datatable theme
         class: '', // custom wrapper class
-        scroll: false, // enable/disable datatable scroll both horizontal and vertical when needed.
-        footer: false // display/hide footer
+        scroll: true, // enable/disable datatable scroll both horizontal and vertical when needed.
+        footer: false, // display/hide footer
+        height: 500
       },
 
       // column sorting
@@ -48,15 +49,15 @@ var DatatableColumnRenderingDemo = function() {
       columns: [
         {
           field: 'RecordID',
-          title: '#',
+          title: 'Sr. No',
           sortable: false, // disable sort for this column
           width: 40,
-          textAlign: 'center',
-          selector: {class: 'm-checkbox--solid m-checkbox--brand'},
+          textAlign: 'center'
+          // selector: {class: 'm-checkbox--solid m-checkbox--brand'},
         }, {
           width: 200,
           field: 'CompanyAgent',
-          title: 'Agent',
+          title: 'Date',
           template: function(data) {
             var number = mUtil.getRandomInt(1, 14);
             var user_img = '100_' + number + '.jpg';
@@ -102,7 +103,7 @@ var DatatableColumnRenderingDemo = function() {
           },
         }, {
           field: 'ShipCountry',
-          title: 'Ship Country',
+          title: 'User',
           width: 150,
           // callback function support for column rendering
           template: function(data) {
@@ -110,11 +111,11 @@ var DatatableColumnRenderingDemo = function() {
           },
         }, {
           field: 'ShipAddress',
-          title: 'Ship Address',
+          title: 'Exam',
           width: 200,
         }, {
           field: 'CompanyEmail',
-          title: 'Email',
+          title: 'Attempt',
           width: 150,
           template: function(data) {
             return '<a class="m-link" href="mailto:' + data.CompanyEmail +
@@ -123,7 +124,7 @@ var DatatableColumnRenderingDemo = function() {
           },
         }, {
           field: 'Status',
-          title: 'Status',
+          title: 'Subject',
           // callback function support for column rendering
           template: function(data) {
             var status = {
@@ -140,7 +141,7 @@ var DatatableColumnRenderingDemo = function() {
           },
         }, {
           field: 'Type',
-          title: 'Type',
+          title: 'Notification/Update',
           // callback function support for column rendering
           template: function(data) {
             var status = {
@@ -156,7 +157,7 @@ var DatatableColumnRenderingDemo = function() {
         }, {
           field: 'Actions',
           width: 110,
-          title: 'Actions',
+          title: 'Notes',
           sortable: false,
           overflow: 'visible',
           template: function (row, index, datatable) {
