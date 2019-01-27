@@ -8,6 +8,7 @@ use \Drupal\file\Entity\File;
 use \Drupal\field_collection\Entity\FieldCollectionItem;
 use Drupal\user\Entity\User;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Component\Serialization\Json;
 
 /**
  * Controller routines for site example routes.
@@ -171,11 +172,62 @@ class SiteController extends ControllerBase {
   /**
    * Quote file handle.
    */
-  public function freelancers() {
-    return [
-      '#theme' => 'freelancers',
-      '#site' => $this->t('site'),
-    ];
+  public function populateDataTable() {
+    $render_array = array();
+    $exam_filter = $_POST['query']['exam'];
+    $attempt_filter = $_POST['query']['attempt'];
+    $subject_filter = $_POST['query']['subject'];
+    $general_filter = $_POST['query']['generalSearch'];
+
+    $query = \Drupal::entityQuery('node');
+    $query->condition('type', 'data_table');
+    $query->condition('status', 1);
+    if(!empty($exam_filter)) {
+      $query->condition('field_exam', $exam_filter, '=');
+    }
+    if(!empty($attempt_filter)) {
+      $query->condition('field_attempt', $attempt_filter, '=');
+    }
+    if(!empty($subject_filter)) {
+      $query->condition('field_subjects', $subject_filter, '=');
+    }
+
+    if(!empty($general_filter)) {
+      $query->condition('field_user', db_like($general_filter) . '%', 'like');
+    }
+    $result = $query->execute();
+    if(!empty($result)) {
+      $render_array['meta'] = array(
+        'page' => 1,
+        'pages' => 1,
+        'perpage' => -1,
+        'total' => count($result),
+        'sort' => 'asc',
+        'field' => 'srno'
+      );
+
+      $count = 1;
+      foreach ($result as $key => $nid) {
+        $data = \Drupal\node\Entity\Node::loadMultiple(array($nid));
+        $data = reset($data);
+        $render_array['data'][] = array(
+          'srno' => $count,
+          'date' => $data->get('field_date')->value,
+          'user' => $data->get('field_user')->value,
+          'exam' => $data->get('field_exam')->value,
+          'attempt' => $data->get('field_attempt')->value,
+          'subject' => $data->get('field_subjects')->value,
+          'notification' => $data->get('field_notification_update')->value,
+          'notes' => $data->get('field_notes')->value,
+        );
+
+        $count++;
+      }
+
+      // Return JSON output.
+      echo Json::encode($render_array);
+      exit;
+    }
   }
 
   /**

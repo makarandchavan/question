@@ -1,0 +1,323 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a single page.
+ *
+ * The doctype, html, head and body tags are not in this template. Instead they
+ * can be found in the html.html.twig template in this directory.
+ *
+ * Available variables:
+ *
+ * General utility variables:
+ * - base_path: The base URL path of the Drupal installation. Will usually be
+ *   "/" unless you have installed Drupal in a sub-directory.
+ * - is_front: A flag indicating if the current page is the front page.
+ * - logged_in: A flag indicating if the user is registered and signed in.
+ * - is_admin: A flag indicating if the user has permission to access
+ *   administration pages.
+ *
+ * Site identity:
+ * - front_page: The URL of the front page. Use this instead of base_path when
+ *   linking to the front page. This includes the language domain or prefix.
+ *
+ * Page content (in order of occurrence in the default page.html.twig):
+ * - title_prefix: Additional output populated by modules, intended to be
+ *   displayed in front of the main title tag that appears in the template.
+ * - title: The page title, for use in the actual content.
+ * - title_suffix: Additional output populated by modules, intended to be
+ *   displayed after the main title tag that appears in the template.
+ * - messages: Status and error messages. Should be displayed prominently.
+ * - tabs: Tabs linking to any sub-pages beneath the current page (e.g., the
+ *   view and edit tabs when displaying a node).
+ * - node: Fully loaded node, if there is an automatically-loaded node
+ *   associated with the page and the node ID is the second argument in the
+ *   page's path (e.g. node/12345 and node/12345/revisions, but not
+ *   comment/reply/12345).
+ *
+ * Regions:
+ * - page.header: Items for the header region.
+ * - page.navigation: Items for the navigation region.
+ * - page.navigation_collapsible: Items for the navigation (collapsible) region.
+ * - page.highlighted: Items for the highlighted content region.
+ * - page.help: Dynamic help text, mostly for admin pages.
+ * - page.content: The main content of the current page.
+ * - page.sidebar_first: Items for the first sidebar.
+ * - page.sidebar_second: Items for the second sidebar.
+ * - page.footer: Items for the footer region.
+ *
+ * @ingroup templates
+ *
+ * @see template_preprocess_page()
+ * @see html.html.twig
+ */
+#}
+<div class="m-grid m-grid--hor m-grid--root m-page">
+  <!-- begin::Header -->
+  <header id="m_header" class="m-grid__item m-header " m-minimize="minimize" m-minimize-mobile="minimize" m-minimize-offset="10" m-minimize-mobile-offset="10">
+    <div class="m-header__top">
+      <div class="m-container m-container--fluid m-container--full-height m-page__container">
+        <div class="m-stack m-stack--ver m-stack--desktop">
+
+          <!-- begin::Brand -->
+          <div class="m-stack__item m-brand m-stack__item--left">
+            <div class="m-stack m-stack--ver m-stack--general m-stack--inline">
+              <div class="m-stack__item m-stack__item--middle m-brand__logo">
+                <a href="index.html" class="m-brand__logo-wrapper">
+                  <span>CA Exam Club</span>
+                </a>
+              </div>
+              <div class="m-stack__item m-stack__item--middle m-brand__tools">
+                <!-- end::Quick Actions-->
+
+                <!-- begin::Responsive Header Menu Toggler-->
+                <a id="m_aside_header_menu_mobile_toggle" href="javascript:;" class="m-brand__icon m-brand__toggler m--visible-tablet-and-mobile-inline-block">
+                  <span></span>
+                </a>
+
+                <!-- end::Responsive Header Menu Toggler-->
+
+                <!-- begin::Topbar Toggler-->
+                <a id="m_aside_header_topbar_mobile_toggle" href="javascript:;" class="m-brand__icon m--visible-tablet-and-mobile-inline-block">
+                  <i class="flaticon-more"></i>
+                </a>
+
+                <!--end::Topbar Toggler-->
+              </div>
+            </div>
+          </div>
+
+          <!-- end::Brand -->
+
+          <!-- begin::Topbar -->
+          <div class="m-stack__item m-stack__item--right m-header-head" id="m_header_nav">
+            <div id="m_header_topbar" class="m-topbar  m-stack m-stack--ver m-stack--general">
+              <div class="m-stack__item m-topbar__nav-wrapper">
+                <ul class="m-topbar__nav m-nav m-nav--inline">
+                  <li class="m-nav__item m-dropdown m-dropdown--medium m-dropdown--arrow  m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click">
+                    <a href="#" class="m-nav__link m-dropdown__toggle">
+                      <span class="m-topbar__userpic">
+                        <img src="/themes/caexam/assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless m--img-centered" alt="" />
+                      </span>
+                      <span class="m-nav__link-icon m-topbar__usericon  m--hide">
+                        <span class="m-nav__link-icon-wrapper"><i class="flaticon-user-ok"></i></span>
+                      </span>
+                      <span class="m-topbar__username m--hide">Mark</span>
+                    </a>
+                    <div class="m-dropdown__wrapper">
+                      <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
+                      <div class="m-dropdown__inner">
+                        <div class="m-dropdown__header m--align-center">
+                          <div class="m-card-user m-card-user--skin-light">
+                            <div class="m-card-user__pic">
+                              <img src="/themes/caexam/assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless" alt="" />
+                            </div>
+                            <div class="m-card-user__details">
+                              <span class="m-card-user__name m--font-weight-500">Mark Andre</span>
+                              <a href="" class="m-card-user__email m--font-weight-300 m-link">mark.andre@gmail.com</a>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="m-dropdown__body">
+                          <div class="m-dropdown__content">
+                            <ul class="m-nav m-nav--skin-light">
+                              <li class="m-nav__section m--hide">
+                                <span class="m-nav__section-text">Section</span>
+                              </li>
+                              <li class="m-nav__item">
+                                <a href="profile.html" class="m-nav__link">
+                                  <i class="m-nav__link-icon flaticon-profile-1"></i>
+                                  <span class="m-nav__link-title">
+                                    <span class="m-nav__link-wrap">
+                                      <span class="m-nav__link-text">My Profile</span>
+                                    </span>
+                                  </span>
+                                </a>
+                              </li>
+                              <li class="m-nav__item">
+                                <a href="profile.html" class="m-nav__link">
+                                  <i class="m-nav__link-icon flaticon-share"></i>
+                                  <span class="m-nav__link-text">Change Password</span>
+                                </a>
+                              </li>
+                              <li class="m-nav__item">
+                                <a href="snippets/pages/user/login.html" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">Logout</a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- end::Topbar -->
+        </div>
+      </div>
+    </div>
+    <div class="m-header__bottom">
+      <div class="m-container m-container--fluid m-container--full-height m-page__container">
+        <div class="m-stack m-stack--ver m-stack--desktop">
+
+          <!-- begin::Horizontal Menu -->
+          <div class="m-stack__item m-stack__item--fluid m-header-menu-wrapper">
+            <button class="m-aside-header-menu-mobile-close  m-aside-header-menu-mobile-close--skin-light " id="m_aside_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
+            <div id="m_header_menu" class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-dark m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-light m-aside-header-menu-mobile--submenu-skin-light ">
+              <ul class="m-menu__nav  m-menu__nav--submenu-arrow ">
+                <li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="javascript:;" class="m-menu__link m-menu__toggle" title="Non functional dummy link"><span class="m-menu__link-text">CA Updates</span><i
+                     class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i></a>
+                  <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs"><span class="m-menu__arrow m-menu__arrow--adjust"></span>
+                  </div>
+                </li>
+                <li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="javascript:;" class="m-menu__link m-menu__toggle" title="Non functional dummy link"><span class="m-menu__link-text">Question Bank</span><i
+                     class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i></a>
+                  <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs"><span class="m-menu__arrow m-menu__arrow--adjust"></span>
+                    <ul class="m-menu__subnav">
+                      
+                    </ul>
+                  </div>
+                </li>
+                <li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="javascript:;" class="m-menu__link m-menu__toggle" title="Non functional dummy link"><span class="m-menu__link-text">Video Bank</span><i
+                     class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i></a>
+                  <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs"><span class="m-menu__arrow m-menu__arrow--adjust"></span>
+                    <ul class="m-menu__subnav">
+                      
+                    </ul>
+                  </div>
+                </li>
+                <li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="javascript:;" class="m-menu__link m-menu__toggle" title="Non functional dummy link"><span class="m-menu__link-text">Downloads</span><i
+                     class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i></a>
+                  <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs"><span class="m-menu__arrow m-menu__arrow--adjust"></span>
+                    
+                  </div>
+                </li>
+                <li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="javascript:;" class="m-menu__link m-menu__toggle" title="Non functional dummy link"><span class="m-menu__link-text">Student's Dashboard</span><i
+                     class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i></a>
+                  <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs"><span class="m-menu__arrow m-menu__arrow--adjust"></span>
+                    
+                  </div>
+                </li>
+                <li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="javascript:;" class="m-menu__link m-menu__toggle" title="Non functional dummy link"><span class="m-menu__link-text">About Us</span><i
+                     class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i></a>
+                  <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs"><span class="m-menu__arrow m-menu__arrow--adjust"></span>
+                    
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- end::Horizontal Menu -->
+        </div>
+      </div>
+    </div>
+  </header>
+  <div class="m-grid__item m-grid__item--fluid  m-grid m-grid--ver-desktop m-grid--desktop m-page__container m-body">
+    <div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+      <!-- BEGIN: Subheader -->
+      <div class="m-subheader ">
+        <div class="d-flex align-items-center">
+          <div class="mr-auto">
+            <h3 class="m-subheader__title m-subheader__title--separator">CA Updates</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- END: Subheader -->
+      <div class="m-content">
+        <!--Begin::Section-->
+        <div class="row">
+          <div class="col-xl-12">
+            <h3>{{ front_content_title|raw }}</h3>
+            {{ front_content_body|raw }}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xl-12">
+            <!--begin: Search Form -->
+            <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
+              <div class="row align-items-center">
+                <div class="col-xl-12 order-2 order-xl-1">
+                  <div class="form-group m-form__group row align-items-center">
+                    <div class="col-md-3">
+                      <div class="m-form__group m-form__group--inline">
+                        <div class="m-form__label">
+                          <label>Exam:</label>
+                        </div>
+                        <div class="m-form__control">
+                          <select class="form-control m-bootstrap-select m-bootstrap-select--solid" id="m_form_exam">
+                            <option value="">All</option>
+                            <option value="CA Final (Old Course)">CA Final (Old Course)</option>
+                            <option value="CA IPCC(Old Course)">CA IPCC(Old Course)</option>
+                            <option value="CA CPT(Old Course)">CA CPT(Old Course)</option>
+                            <option value="CA Final (New Course)">CA Final (New Course)</option>
+                            <option value="CA Intermediate(New Course)">CA Intermediate(New Course)</option>
+                            <option value="CA Foundation(New Course)">CA Foundation(New Course)</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="d-md-none m--margin-bottom-10"></div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="m-form__group m-form__group--inline">
+                        <div class="m-form__label">
+                          <label class="m-label m-label--single">Attempt:</label>
+                        </div>
+                        <div class="m-form__control">
+                          <select class="form-control m-bootstrap-select m-bootstrap-select--solid" id="m_form_attempt">
+                            <option value="">All</option>
+                            <option value="May-19">May-19</option>
+                            <option value="Nov-19">Nov-19</option>
+                            <option value="May-20">May-20</option>
+                            <option value="Nov-20">Nov-20</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="d-md-none m--margin-bottom-10"></div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="m-form__group m-form__group--inline">
+                        <div class="m-form__label">
+                          <label class="m-label m-label--single">Subject:</label>
+                        </div>
+                        <div class="m-form__control">
+                          <select class="form-control m-bootstrap-select m-bootstrap-select--solid" id="m_form_subject">
+                            <option value="">All</option>
+                            <option value="Online">Online</option>
+                            <option value="Retail">Retail</option>
+                            <option value="Direct">Direct</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="d-md-none m--margin-bottom-10"></div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="m-input-icon m-input-icon--left">
+                        <input type="text" class="form-control m-input m-input--solid" placeholder="Search..." id="generalSearch">
+                        <span class="m-input-icon__icon m-input-icon__icon--left">
+                          <span><i class="la la-search"></i></span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--end: Search Form -->
+
+            <!--begin: Datatable -->
+            <div class="m_datatable" id="column_rendering"></div>
+
+            <!--end: Datatable -->
+          </div>
+        </div>
+        <!--End::Section-->
+      </div>
+    </div>
+  </div>
+</div>

@@ -107,11 +107,25 @@ function caexam_preprocess_page(&$vars) {
       $vars['subjects'] = $account->get('field_subjects')->value;
     }
   }
+
+  if(\Drupal::service('path.matcher')->isFrontPage()) {
+    // Get all content.
+    $query = \Drupal::entityQuery('node')
+      ->condition('type', 'front_page_description')
+      ->condition('status', 1);
+    $result = $query->execute();
+    if(!empty($result)) {
+      $front_content = \Drupal\node\Entity\Node::loadMultiple($result);
+      $front_content = reset($front_content);
+      $vars['front_content_title'] = $front_content->get('title')->value;
+      $vars['front_content_body'] = $front_content->get('body')->value;
+    }
+  }
 }
 
 function caexam_preprocess_node(&$vars) {
-  $statistics = statistics_get($vars['node']->id());
-  $vars['node_stats'] = \Drupal::translation()->formatPlural($statistics['totalcount'], '1 view', '@count');
+  //$statistics = statistics_get($vars['node']->id());
+  //$vars['node_stats'] = \Drupal::translation()->formatPlural($statistics['totalcount'], '1 view', '@count');
 }
 
  /**

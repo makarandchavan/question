@@ -12,5 +12,5 @@ regions:
   services: 'services'
   footer: 'footer'
 
-libraries:
-  - 'caexamss/global-styling'
+#libraries:
+  #- 'caexamss/global-styling'

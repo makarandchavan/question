@@ -30,9 +30,9 @@ site.upload: # This is a route name.
     _permission: 'access content'
 
 site.freelancers: # This is a route name.
-  path: '/freelancers'
+  path: '/populate-data'
   defaults:
-    _controller: '\Drupal\site\Controller\SiteController::freelancers'
+    _controller: '\Drupal\site\Controller\SiteController::populateDataTable'
     _title: ''
   requirements:
     _permission: 'access content'
