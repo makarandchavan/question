@@ -6378,8 +6378,8 @@ var mMenu = function(elementId, options) {
             body.appendChild(dropoff);
 
             mUtil.addEvent(dropoff, 'click', function(e) {
-                e.stopPropagation();
-                e.preventDefault();
+                // e.stopPropagation();
+                // e.preventDefault();
                 mUtil.remove(this);
                 Plugin.hideSubmenuDropdown(el, true);
             });

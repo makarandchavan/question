@@ -12,6 +12,5 @@ $(function () {
     	} else {
     		_others.addClass('m--hide');
     	}
-    	console.log(self);
     })
 });
