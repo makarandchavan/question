@@ -35,3 +35,31 @@
 .m-header--fixed .m-header .m-header__bottom {
 	/*margin-top: 0;*/
 }
+
+.m-portlet.m-portlet--rounded .m-portlet__body {
+     border-bottom-left-radius: 0; 
+     border-bottom-right-radius: 0; 
+}
+
+[class^="fa-"], [class*=" fa-"],
+[class^="flaticon-"], [class*=" flaticon-"] {
+    font-size: 2.5rem;
+}
+
+.search-q form.m-form--fit .m-form__group {
+	padding: 0;
+}
+
+.answer .m-portlet {
+	box-shadow: none;
+}
+
+.answer .m-portlet__body,
+.answer .m-portlet__head {
+	background: #fff;
+}
+
+.question.m-portlet--fullscreen .m-scrollable {
+	width: 50%;
+	margin: 0 auto;
+}
