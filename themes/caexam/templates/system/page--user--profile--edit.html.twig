@@ -74,69 +74,79 @@
           <!-- end::Brand -->
 
           <!-- begin::Topbar -->
-          <div class="m-stack__item m-stack__item--right m-header-head" id="m_header_nav">
-            <div id="m_header_topbar" class="m-topbar  m-stack m-stack--ver m-stack--general">
-              <div class="m-stack__item m-topbar__nav-wrapper">
-                <ul class="m-topbar__nav m-nav m-nav--inline">
-                  <li class="m-nav__item m-dropdown m-dropdown--medium m-dropdown--arrow  m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click">
-                    <a href="#" class="m-nav__link m-dropdown__toggle">
-                      <span class="m-topbar__userpic">
-                        <img src="assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless m--img-centered" alt="" />
-                      </span>
-                      <span class="m-nav__link-icon m-topbar__usericon  m--hide">
-                        <span class="m-nav__link-icon-wrapper"><i class="flaticon-user-ok"></i></span>
-                      </span>
-                      <span class="m-topbar__username m--hide">{{ fname|raw }}</span>
-                    </a>
-                    <div class="m-dropdown__wrapper">
-                      <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
-                      <div class="m-dropdown__inner">
-                        <div class="m-dropdown__header m--align-center">
-                          <div class="m-card-user m-card-user--skin-light">
-                            <div class="m-card-user__pic">
-                              <img src="/themes/caexam/assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless" alt="" />
-                            </div>
-                            <div class="m-card-user__details">
-                              <span class="m-card-user__name m--font-weight-500">{{ fname|raw }} {{ lname|raw }}</span>
-                              <a href="" class="m-card-user__email m--font-weight-300 m-link">{{ mail|raw }}</a>
+          {% if not is_anonymous %}
+            <div class="m-stack__item m-stack__item--right m-header-head" id="m_header_nav">
+              <div id="m_header_topbar" class="m-topbar  m-stack m-stack--ver m-stack--general">
+                <div class="m-stack__item m-topbar__nav-wrapper">
+                  <ul class="m-topbar__nav m-nav m-nav--inline">
+                    <li class="m-nav__item m-dropdown m-dropdown--medium m-dropdown--arrow  m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click">
+                      <a href="#" class="m-nav__link m-dropdown__toggle">
+                        <span class="m-topbar__userpic">
+                          <img src="/themes/caexam/assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless m--img-centered" alt="" />
+                        </span>
+                        <span class="m-nav__link-icon m-topbar__usericon  m--hide">
+                          <span class="m-nav__link-icon-wrapper"><i class="flaticon-user-ok"></i></span>
+                        </span>
+                        <span class="m-topbar__username m--hide">{{ fname }}</span>
+                      </a>
+                      <div class="m-dropdown__wrapper">
+                        <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
+                        <div class="m-dropdown__inner">
+                          <div class="m-dropdown__header m--align-center">
+                            <div class="m-card-user m-card-user--skin-light">
+                              <div class="m-card-user__pic">
+                                <img src="/themes/caexam/assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless" alt="" />
+                              </div>
+                              <div class="m-card-user__details">
+                                <span class="m-card-user__name m--font-weight-500">{{ fname }} {{ lname }}</span>
+                                <a href="" class="m-card-user__email m--font-weight-300 m-link">{{ mail }}</a>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="m-dropdown__body">
-                          <div class="m-dropdown__content">
-                            <ul class="m-nav m-nav--skin-light">
-                              <li class="m-nav__section m--hide">
-                                <span class="m-nav__section-text">Section</span>
-                              </li>
-                              <li class="m-nav__item">
-                                <a href="profile.html" class="m-nav__link">
-                                  <i class="m-nav__link-icon flaticon-profile-1"></i>
-                                  <span class="m-nav__link-title">
-                                    <span class="m-nav__link-wrap">
-                                      <span class="m-nav__link-text">My Profile</span>
+                          <div class="m-dropdown__body">
+                            <div class="m-dropdown__content">
+                              <ul class="m-nav m-nav--skin-light">
+                                <li class="m-nav__section m--hide">
+                                  <span class="m-nav__section-text">Section</span>
+                                </li>
+                                <li class="m-nav__item">
+                                  <a href="/user/{{ uid }}/edit" class="m-nav__link">
+                                    <i class="m-nav__link-icon flaticon-profile-1"></i>
+                                    <span class="m-nav__link-title">
+                                      <span class="m-nav__link-wrap">
+                                        <span class="m-nav__link-text">My Profile</span>
+                                      </span>
                                     </span>
-                                  </span>
-                                </a>
-                              </li>
-                              <li class="m-nav__item">
-                                <a href="profile.html" class="m-nav__link">
-                                  <i class="m-nav__link-icon flaticon-share"></i>
-                                  <span class="m-nav__link-text">Change Password</span>
-                                </a>
-                              </li>
-                              <li class="m-nav__item">
-                                <a href="snippets/pages/user/login.html" class="btn m-btn--pill    btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">Logout</a>
-                              </li>
-                            </ul>
+                                  </a>
+                                </li>
+                                <li class="m-nav__item">
+                                  <a href="/user/{{ uid }}/edit" class="m-nav__link">
+                                    <i class="m-nav__link-icon flaticon-share"></i>
+                                    <span class="m-nav__link-text">Change Password</span>
+                                  </a>
+                                </li>
+                                <li class="m-nav__item">
+                                  <a href="/user/logout" class="btn m-btn--pill btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">Logout</a>
+                                </li>
+                              </ul>
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </li>
-                </ul>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
+          {% else  %}
+            <div class="m-stack__item m-stack__item--right m-header-head" id="m_header_nav">
+                <div id="m_header_topbar" class="m-topbar  m-stack m-stack--ver m-stack--general">
+                  <div class="m-stack__item m-topbar__nav-wrapper">
+                    <a href="/user/login"><span class="m-topbar__username m--hide">Login</span></a>
+                  </div>
+                </div>
+              </div>
+          {% endif %}
 
           <!-- end::Topbar -->
         </div>
@@ -151,41 +161,45 @@
             <button class="m-aside-header-menu-mobile-close  m-aside-header-menu-mobile-close--skin-light " id="m_aside_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
             <div id="m_header_menu" class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-dark m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-light m-aside-header-menu-mobile--submenu-skin-light ">
               <ul class="m-menu__nav  m-menu__nav--submenu-arrow ">
-                <li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="javascript:;" class="m-menu__link m-menu__toggle" title="Non functional dummy link"><span class="m-menu__link-text">CA Updates</span><i
+                <li class="m-menu__item  m-menu__item--submenu m-menu__item--active-tab m-menu__item--tabs" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="{{ url('<front>') }}" class="m-menu__link" title="Non functional dummy link"><span class="m-menu__link-text">CA Updates</span><i
+                     class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i></a>
+                  <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs"><span class="m-menu__arrow m-menu__arrow--adjust"></span>
+                  </div>
+                </li>
+                <li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="javascript:;" class="m-menu__link" title="Non functional dummy link"><span class="m-menu__link-text">Question Bank</span><i
                      class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i></a>
                   <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs"><span class="m-menu__arrow m-menu__arrow--adjust"></span>
                     <ul class="m-menu__subnav">
-                      <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="builder.html" class="m-menu__link "><span class="m-menu__link-text">Final CA (Old Course)</span></a></li>
-                      <li class="m-menu__item " aria-haspopup="true"><a href="index.html" class="m-menu__link "><span class="m-menu__link-text">Final CA (New Course)</span></a></li>
-                      <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="builder.html" class="m-menu__link "><span class="m-menu__link-text">IPCC (Old Course)</span></a></li>
-                      <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="builder.html" class="m-menu__link "><span class="m-menu__link-text">Intermediate (New Course)</span></a></li>
-                      <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="builder.html" class="m-menu__link "><span class="m-menu__link-text">CPT (Old Course)</span></a></li>
-                      <li class="m-menu__item " m-menu-link-redirect="1" aria-haspopup="true"><a href="builder.html" class="m-menu__link "><span class="m-menu__link-text">Foundation (New Course)</span></a></li>
+                      
                     </ul>
                   </div>
                 </li>
-                <li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="javascript:;" class="m-menu__link m-menu__toggle" title="Non functional dummy link"><span class="m-menu__link-text">Question Bank</span><i
+                {% if not is_anonymous %}
+                <li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="javascript:;" class="m-menu__link" title="Non functional dummy link"><span class="m-menu__link-text">Video Bank</span><i
                      class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i></a>
                   <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs"><span class="m-menu__arrow m-menu__arrow--adjust"></span>
                     <ul class="m-menu__subnav">
+                      
                     </ul>
                   </div>
                 </li>
-                <li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="javascript:;" class="m-menu__link m-menu__toggle" title="Non functional dummy link"><span class="m-menu__link-text">Video Bank</span><i
+                <li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="javascript:;" class="m-menu__link" title="Non functional dummy link"><span class="m-menu__link-text">Downloads</span><i
                      class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i></a>
                   <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs"><span class="m-menu__arrow m-menu__arrow--adjust"></span>
-                    <ul class="m-menu__subnav">
-                    </ul>
+                    
                   </div>
                 </li>
-                <li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="javascript:;" class="m-menu__link m-menu__toggle" title="Non functional dummy link"><span class="m-menu__link-text">Downloads</span><i
+                <li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="javascript:;" class="m-menu__link" title="Non functional dummy link"><span class="m-menu__link-text">Student's Dashboard</span><i
                      class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i></a>
                   <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs"><span class="m-menu__arrow m-menu__arrow--adjust"></span>
+                    
                   </div>
                 </li>
-                <li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="javascript:;" class="m-menu__link m-menu__toggle" title="Non functional dummy link"><span class="m-menu__link-text">Student's Dashboard</span><i
+                {% endif %}
+                <li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="/about" class="m-menu__link" title="Non functional dummy link"><span class="m-menu__link-text">About Us</span><i
                      class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i></a>
                   <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs"><span class="m-menu__arrow m-menu__arrow--adjust"></span>
+                    
                   </div>
                 </li>
               </ul>
@@ -366,7 +380,7 @@
                           </div>
                           <div class="col-7">
                             <button type="submit" id="submit-profile" class="btn btn-accent m-btn m-btn--air m-btn--custom">Save changes</button>&nbsp;&nbsp;
-                            <button type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom">Cancel</button>
+                            <!-- <button type="reset" class="btn btn-secondary m-btn m-btn--air m-btn--custom">Cancel</button> -->
                           </div>
                         </div>
                       </div>

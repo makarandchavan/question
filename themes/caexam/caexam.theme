@@ -87,9 +87,23 @@ function caexam_preprocess_page(&$vars) {
   // Retrieve an array which contains the path pieces.
   $pathArgs = explode('/', $current_path);
   $vars['path_arg'] = $pathArgs[1];
+  $vars['is_anonymous'] = FALSE;
+
+  if(\Drupal::currentUser()->isAnonymous()) {
+    $vars['is_anonymous'] = TRUE;
+  }
+  else {
+    $account = User::load(\Drupal::currentUser()->id());
+    $vars['fname'] = $account->get('field_first_name')->value;
+    $vars['lname'] = $account->get('field_last_name')->value;
+    $vars['mail'] = $account->get('mail')->value;
+    $vars['uid'] = \Drupal::currentUser()->id();
+  }
 
   if (\Drupal::currentUser()->isAuthenticated() && in_array('user', $pathArgs) && in_array('edit', $pathArgs)) {
-    $account = User::load(\Drupal::currentUser()->id());
+    if(empty($account)) {
+      $account = User::load(\Drupal::currentUser()->id());
+    }
     $vars['fname'] = $account->get('field_first_name')->value;
     $vars['lname'] = $account->get('field_last_name')->value;
     $vars['mail'] = $account->get('mail')->value;
@@ -136,5 +150,11 @@ function caexam_theme_suggestions_page_alter(array &$suggestions, array $variabl
   $path_args = explode('/', $request->getPath());
   if (\Drupal::currentUser()->isAuthenticated() && in_array('user', $path_args) && in_array('edit', $path_args)) {
     $suggestions[] = 'page__user__profile__edit';
+  }
+  if (in_array('node', $path_args)) {
+    $node = \Drupal::routeMatch()->getParameter('node');
+    if ($node instanceof \Drupal\node\NodeInterface) {
+      $suggestions[] = 'page__' . $node->bundle();
+    }
   }
 }

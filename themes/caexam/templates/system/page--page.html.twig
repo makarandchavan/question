@@ -176,7 +176,7 @@
             <button class="m-aside-header-menu-mobile-close  m-aside-header-menu-mobile-close--skin-light " id="m_aside_header_menu_mobile_close_btn"><i class="la la-close"></i></button>
             <div id="m_header_menu" class="m-header-menu m-aside-header-menu-mobile m-aside-header-menu-mobile--offcanvas  m-header-menu--skin-dark m-header-menu--submenu-skin-light m-aside-header-menu-mobile--skin-light m-aside-header-menu-mobile--submenu-skin-light ">
               <ul class="m-menu__nav  m-menu__nav--submenu-arrow ">
-                <li class="m-menu__item  m-menu__item--submenu m-menu__item--active-tab m-menu__item--tabs" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="{{ url('<front>') }}" class="m-menu__link" title="Non functional dummy link"><span class="m-menu__link-text">CA Updates</span><i
+                <li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="{{ url('<front>') }}" class="m-menu__link" title="Non functional dummy link"><span class="m-menu__link-text">CA Updates</span><i
                      class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i></a>
                   <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs"><span class="m-menu__arrow m-menu__arrow--adjust"></span>
                   </div>
@@ -211,7 +211,7 @@
                   </div>
                 </li>
                 {% endif %}
-                <li class="m-menu__item  m-menu__item--submenu m-menu__item--tabs" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="/about" class="m-menu__link" title="Non functional dummy link"><span class="m-menu__link-text">About Us</span><i
+                <li class="m-menu__item  m-menu__item--submenu m-menu__item--active-tab m-menu__item--tabs" m-menu-submenu-toggle="tab" aria-haspopup="true"><a href="/about" class="m-menu__link" title="Non functional dummy link"><span class="m-menu__link-text">About Us</span><i
                      class="m-menu__hor-arrow la la-angle-down"></i><i class="m-menu__ver-arrow la la-angle-right"></i></a>
                   <div class="m-menu__submenu m-menu__submenu--classic m-menu__submenu--left m-menu__submenu--tabs"><span class="m-menu__arrow m-menu__arrow--adjust"></span>
                     
@@ -226,6 +226,7 @@
       </div>
     </div>
   </header>
+  <!-- begin::Body -->
   <div class="m-grid__item m-grid__item--fluid  m-grid m-grid--ver-desktop m-grid--desktop m-page__container m-body">
     <div class="m-grid__item m-grid__item--fluid m-wrapper">
 
@@ -233,7 +234,7 @@
       <div class="m-subheader ">
         <div class="d-flex align-items-center">
           <div class="mr-auto">
-            <h3 class="m-subheader__title m-subheader__title--separator">CA Updates</h3>
+            <h3 class="m-subheader__title m-subheader__title--separator">About Us</h3>
           </div>
         </div>
       </div>
@@ -241,93 +242,7 @@
       <!-- END: Subheader -->
       <div class="m-content">
         <!--Begin::Section-->
-        <div class="row">
-          <div class="col-xl-12">
-            <h3>{{ front_content_title|raw }}</h3>
-            {{ front_content_body|raw }}
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-xl-12">
-            <!--begin: Search Form -->
-            <div class="m-form m-form--label-align-right m--margin-top-20 m--margin-bottom-30">
-              <div class="row align-items-center">
-                <div class="col-xl-12 order-2 order-xl-1">
-                  <div class="form-group m-form__group row align-items-center">
-                    <div class="col-md-3">
-                      <div class="m-form__group m-form__group--inline">
-                        <div class="m-form__label">
-                          <label>Exam:</label>
-                        </div>
-                        <div class="m-form__control">
-                          <select class="form-control m-bootstrap-select m-bootstrap-select--solid" id="m_form_exam">
-                            <option value="">All</option>
-                            <option value="CA Final (Old Course)">CA Final (Old Course)</option>
-                            <option value="CA IPCC(Old Course)">CA IPCC(Old Course)</option>
-                            <option value="CA CPT(Old Course)">CA CPT(Old Course)</option>
-                            <option value="CA Final (New Course)">CA Final (New Course)</option>
-                            <option value="CA Intermediate(New Course)">CA Intermediate(New Course)</option>
-                            <option value="CA Foundation(New Course)">CA Foundation(New Course)</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="d-md-none m--margin-bottom-10"></div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="m-form__group m-form__group--inline">
-                        <div class="m-form__label">
-                          <label class="m-label m-label--single">Subject:</label>
-                        </div>
-                        <div class="m-form__control">
-                          <select class="form-control m-bootstrap-select m-bootstrap-select--solid" id="m_form_subject" disabled="disabled">
-                            <option value="">All</option>
-                            <option value="Online">Online</option>
-                            <option value="Retail">Retail</option>
-                            <option value="Direct">Direct</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="d-md-none m--margin-bottom-10"></div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="m-form__group m-form__group--inline">
-                        <div class="m-form__label">
-                          <label class="m-label m-label--single">Attempt:</label>
-                        </div>
-                        <div class="m-form__control">
-                          <select class="form-control m-bootstrap-select m-bootstrap-select--solid" id="m_form_attempt">
-                            <option value="">All</option>
-                            <option value="May-19">May-19</option>
-                            <option value="Nov-19">Nov-19</option>
-                            <option value="May-20">May-20</option>
-                            <option value="Nov-20">Nov-20</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div class="d-md-none m--margin-bottom-10"></div>
-                    </div>
-                    <div class="col-md-3">
-                      <div class="m-input-icon m-input-icon--left">
-                        <input type="text" class="form-control m-input m-input--solid" placeholder="Search..." id="generalSearch">
-                        <span class="m-input-icon__icon m-input-icon__icon--left">
-                          <span><i class="la la-search"></i></span>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!--end: Search Form -->
-
-            <!--begin: Datatable -->
-            <div class="m_datatable" id="column_rendering"></div>
-
-            <!--end: Datatable -->
-          </div>
-        </div>
+        {{ node.body.value|raw }}
         <!--End::Section-->
       </div>
     </div>

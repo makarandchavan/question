@@ -55,7 +55,7 @@ var DatatableColumnRenderingDemo = function() {
           textAlign: 'center'
           // selector: {class: 'm-checkbox--solid m-checkbox--brand'},
         }, {
-          width: 200,
+          width: 100,
           field: 'date',
           title: 'Date'
           /*template: function(data) {
@@ -113,10 +113,23 @@ var DatatableColumnRenderingDemo = function() {
           field: 'exam',
           title: 'Exam',
           width: 200
+          /*template: function(data) {
+            var status = {
+              1: {'title': 'CA IPCC(Old Course)', 'class': 'm-badge--brand'},
+              2: {'title': 'CA IPCC(Old Course)', 'class': ' m-badge--metal'},
+              3: {'title': 'CA Final (Old Course)', 'class': ' m-badge--primary'},
+              4: {'title': 'Success', 'class': ' m-badge--success'},
+              5: {'title': 'Info', 'class': ' m-badge--info'},
+              6: {'title': 'Danger', 'class': ' m-badge--danger'},
+              7: {'title': 'Warning', 'class': ' m-badge--warning'},
+            };
+            return '<span class="m-badge ' + status[data.exam].class +
+                ' m-badge--wide">' + status[data.exam].title + '</span>';
+          }*/
         }, {
           field: 'attempt',
           title: 'Attempt',
-          width: 150
+          width: 100
           /*template: function(data) {
             return '<a class="m-link" href="mailto:' + data.attempt +
                 '">' +
@@ -124,7 +137,8 @@ var DatatableColumnRenderingDemo = function() {
           },*/
         }, {
           field: 'subject',
-          title: 'Subject'
+          title: 'Subject',
+          width: 100
           // callback function support for column rendering
           /*template: function(data) {
             var status = {
@@ -141,7 +155,8 @@ var DatatableColumnRenderingDemo = function() {
           },*/
         }, {
           field: 'notification',
-          title: 'Notification/Update'
+          title: 'Notification/Update',
+          width: 250
           // callback function support for column rendering
           /*template: function(data) {
             var status = {
@@ -183,6 +198,104 @@ var DatatableColumnRenderingDemo = function() {
           },*/
         }],
     });
+
+    var E1 = [
+        {display: "S - 1", value: "s1"},
+        {display: "S - 2", value: "s2"},
+        {display: "S - 3", value: "s3"},
+        {display: "S - 4", value: "s4"},
+        {display: "S - 5", value: "s5"}
+    ];
+
+    var E2 = [
+        {display: "S - 6", value: "s6"},
+        {display: "S - 7", value: "s7"},
+        {display: "S - 8", value: "s8"}
+    ];
+
+    var E3 = [
+        {display: "S - 9", value: "s9"},
+        {display: "S - 10", value: "s10"},
+        {display: "S - 11", value: "s11"},
+        {display: "S - 12", value: "s12"}
+    ];
+
+    var E4 = [
+        {display: "S - 13", value: "s13"},
+        {display: "S - 14", value: "s14"},
+        {display: "S - 15", value: "s15"},
+        {display: "S - 16", value: "s16"},
+        {display: "S - 17", value: "s17"}
+    ];
+
+    var E5 = [
+        {display: "S - 18", value: "s18"},
+        {display: "S - 19", value: "s19"},
+        {display: "S - 20", value: "s20"},
+        {display: "S - 21", value: "s21"},
+        {display: "S - 22", value: "s22"}
+    ];
+
+    var E6 = [
+        {display: "S - 23", value: "s23"},
+        {display: "S - 24", value: "s24"},
+        {display: "S - 25", value: "s25"},
+        {display: "S - 26", value: "s26"},
+        {display: "S - 27", value: "s27"}
+    ];
+
+    $('#m_form_exam').on('change', function() {
+      var parent = $(this).val();
+
+      switch (parent) {
+        case 'CA Final (Old Course)':
+            list(E1);
+            break;
+        case 'CA IPCC(Old Course)':
+            list(E2);
+            break;
+        case 'CA CPT(Old Course)':
+            list(E3);
+            break;
+        case 'CA Final (New Course)':
+            list(E1);
+            break;
+        case 'CA Intermediate(New Course)':
+            list(E2);
+            break;
+        case 'CA Foundation(New Course)':
+            list(E3);
+            break;
+        case 'All':
+            $('#m_form_subject').attr('disabled', 'disabled');
+            $('#m_form_subject').html('<option value="">Select subject</option>').selectpicker('refresh');
+            break;
+        default:
+            $('#m_form_subject').attr('disabled', 'disabled').selectpicker('refresh');
+            break;
+        }
+
+      datatable.search($(this).val(), 'Status');
+    });
+
+    $('#m_form_attempt').on('change', function() {
+      datatable.search($(this).val(), 'Type');
+    });
+
+    $('#m_form_subject').on('change', function() {
+      datatable.search($(this).val(), 'Type');
+    });
+
+    $('#m_form_exam, #m_form_attempt, #m_form_subject').selectpicker();
+
+    function list(array_list) {
+        $('#m_form_subject').removeAttr('disabled');
+        $('#m_form_subject').html('');
+
+        $(array_list).each(function (i) {
+            $('#m_form_subject').append("<option value=\""+array_list[i].value+"\">"+array_list[i].display+"</option>").selectpicker('refresh');
+        });
+    }
 
 	  $('#m_form_exam').on('change', function() {
 		  datatable.search($(this).val(), 'exam');

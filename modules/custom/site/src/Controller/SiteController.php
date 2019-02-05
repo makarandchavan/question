@@ -214,9 +214,9 @@ class SiteController extends ControllerBase {
           'srno' => $count,
           'date' => $data->get('field_date')->value,
           'user' => $data->get('field_user')->value,
-          'exam' => $data->get('field_exam')->value,
+          'exam' => '<span class="m-badge m-badge--brand m-badge--wide">' . $data->get('field_exam')->value . '</span>',
           'attempt' => $data->get('field_attempt')->value,
-          'subject' => $data->get('field_subjects')->value,
+          'subject' => '<span class="m--font-bold m--font-primary">' . $data->get('field_subjects')->value . '</span>',
           'notification' => $data->get('field_notification_update')->value,
           'notes' => $data->get('field_notes')->value,
         );
