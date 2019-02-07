@@ -3,7 +3,27 @@ var Select2 = function() {
     //== Private functions
     var demos = function() {
         // basic
-        $('#m_select2_1, #m_select2_1_validate').select2({
+        $('#m_select2_exam, #m_select2_exam_validate').select2({
+            placeholder: "Select a state"
+        });
+
+        $('#m_select2_attempt, #m_select2_attempt_validate').select2({
+            placeholder: "Select a state"
+        });
+
+        $('#m_select2_author, #m_select2_author_validate').select2({
+            placeholder: "Select a state"
+        });
+
+        $('#m_select2_year, #m_select2_year_validate').select2({
+            placeholder: "Select a state"
+        });
+
+        $('#m_select2_subject, #m_select2_subject_validate').select2({
+            placeholder: "Select a state"
+        });
+
+        $('#m_select2_topic, #m_select2_topic_validate').select2({
             placeholder: "Select a state"
         });
 

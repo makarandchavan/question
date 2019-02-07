@@ -147,6 +147,15 @@ class SiteController extends ControllerBase {
   }
 
   /**
+   * Questions page handle.
+   */
+  public function populateQuestions() {
+    return [
+      '#markup' => '',
+    ];
+  }
+
+  /**
    * Quote file handle.
    */
   public function uploadFile() {

@@ -13,6 +13,7 @@ site.freelance_form: # This is a route name.
     _title: 'Thank You'
   requirements:
     _permission: 'access content'
+
 site.contact_form: # This is a route name.
   path: '/submit/profile'
   defaults:
@@ -21,18 +22,18 @@ site.contact_form: # This is a route name.
   requirements:
     _role: 'authenticated'
 
-site.upload: # This is a route name.
-  path: '/uploadfile'
+site.question: # This is a route name.
+  path: '/questions'
   defaults:
-    _controller: '\Drupal\site\Controller\SiteController::uploadFile'
+    _controller: '\Drupal\site\Controller\SiteController::populateQuestions'
     _title: ''
   requirements:
     _permission: 'access content'
 
-site.freelancers: # This is a route name.
-  path: '/populate-data'
+site.upload: # This is a route name.
+  path: '/uploadfile'
   defaults:
-    _controller: '\Drupal\site\Controller\SiteController::populateDataTable'
+    _controller: '\Drupal\site\Controller\SiteController::uploadFile'
     _title: ''
   requirements:
     _permission: 'access content'
