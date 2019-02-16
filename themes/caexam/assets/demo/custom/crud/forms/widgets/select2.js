@@ -4,32 +4,44 @@ var Select2 = function() {
     var demos = function() {
         // basic
         $('#m_select2_exam, #m_select2_exam_validate').select2({
-            placeholder: "Select a state"
+            placeholder: "Exam",
+            dropdownAutoWidth: true
         });
 
         $('#m_select2_attempt, #m_select2_attempt_validate').select2({
-            placeholder: "Select a state"
+            placeholder: "Attempt",
+            dropdownAutoWidth: true
         });
 
         $('#m_select2_author, #m_select2_author_validate').select2({
-            placeholder: "Select a state"
+            placeholder: "Author",
+            dropdownAutoWidth: true
         });
 
         $('#m_select2_year, #m_select2_year_validate').select2({
-            placeholder: "Select a state"
+            placeholder: "Year of Plublication",
+            dropdownAutoWidth: true
         });
 
         $('#m_select2_subject, #m_select2_subject_validate').select2({
-            placeholder: "Select a state"
+            placeholder: "Subject",
+            dropdownAutoWidth: true
         });
 
         $('#m_select2_topic, #m_select2_topic_validate').select2({
-            placeholder: "Select a state"
+            placeholder: "Topic",
+            dropdownAutoWidth: true
+        });
+
+        $('#m_select2_sub_topic, #m_select2_sub_topic_validate').select2({
+            placeholder: "Sub Topic",
+            dropdownAutoWidth: true
         });
 
         // nested
         $('#m_select2_2, #m_select2_2_validate').select2({
-            placeholder: "Select a state"
+            placeholder: "Select a state",
+            dropdownAutoWidth: true
         });
 
         // multi select
