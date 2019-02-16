@@ -72,6 +72,13 @@
 	padding-bottom: 0;
 }
 
+.custom-tabs .nav-tabs > li {
+    position:relative;
+}
+.custom-tabs .nav-tabs > li > a {
+    display:inline-block;
+}
+
 .custom-tabs .nav-tabs > li > span {
     display:none;
     cursor:pointer;
