@@ -152,8 +152,48 @@
           {% else  %}
             <div class="m-stack__item m-stack__item--right m-header-head" id="m_header_nav">
                 <div id="m_header_topbar" class="m-topbar  m-stack m-stack--ver m-stack--general">
-                  <div class="m-stack__item m-topbar__nav-wrapper">
-                    <a href="/user/login"><span class="m-topbar__username m--hide">Login</span></a>
+                  <dxziv class="m-stack__item m-topbar__nav-wrapper">
+                    <ul class="m-topbar__nav m-nav m-nav--inline">
+                      <li class="m-nav__item m-dropdown m-dropdown--medium m-dropdown--arrow  m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light" m-dropdown-toggle="click">
+                        <a href="#" class="m-nav__link m-dropdown__toggle">
+                          <span class="m-topbar__userpic">
+                            <img src="/themes/caexam/assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless m--img-centered" alt="" />
+                          </span>
+                          <span class="m-nav__link-icon m-topbar__usericon  m--hide">
+                            <span class="m-nav__link-icon-wrapper"><i class="flaticon-user-ok"></i></span>
+                          </span>
+                          <span class="m-topbar__username m--hide">{{ fname }}</span>
+                        </a>
+                        <div class="m-dropdown__wrapper">
+                          <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
+                          <div class="m-dropdown__inner">
+                            <div class="m-dropdown__header m--align-center">
+                              <div class="m-card-user m-card-user--skin-light">
+                                <div class="m-card-user__pic">
+                                  <img src="/themes/caexam/assets/app/media/img/users/user4.jpg" class="m--img-rounded m--marginless" alt="" />
+                                </div>
+                                <div class="m-card-user__details">
+                                  <span class="m-card-user__name m--font-weight-500">{{ fname }} {{ lname }}</span>
+                                  <a href="" class="m-card-user__email m--font-weight-300 m-link">{{ mail }}</a>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="m-dropdown__body">
+                              <div class="m-dropdown__content">
+                                <ul class="m-nav m-nav--skin-light">
+                                  <li class="m-nav__section m--hide">
+                                    <span class="m-nav__section-text">Section</span>
+                                  </li>
+                                  <li class="m-nav__item">
+                                    <a href="/user/login" class="btn m-btn--pill btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">Login</a>
+                                  </li>
+                                </ul>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -246,88 +286,51 @@
                       <div class="col-lg-4 col-sm-4">
                         <select class="form-control m-select2" id="m_select2_exam" name="param">
                           <option value="">Exam</option>
-                          <option value="CA">California</option>
-                          <option value="NV">Nevada</option>
-                          <option value="OR">Oregon</option>
-                          <option value="WA">Washington</option>
-                          <option value="AZ">Arizona</option>
-                          <option value="CO">Colorado</option>
-                          <option value="ID">Idaho</option>
-                          <option value="MT">Montana</option>
+                          {% for key, exams in exam %}
+                            <option value="{{ key }}">{{ exams.name|t }}</option>
+                          {% endfor %}
                         </select>
                       </div>
                       <div class="col-lg-4 col-md-4 col-sm-4">
                         <select class="form-control m-select2" id="m_select2_author" name="param">
                           <option value="">Author</option>
-                          <option value="AK">Alaska</option>
-                          <option value="HI">Hawaii</option>
-                          <option value="CA">California</option>
-                          <option value="NV">Nevada</option>
-                          <option value="OR">Oregon</option>
-                          <option value="WA">Washington</option>
-                          <option value="AZ">Arizona</option>
-                          <option value="CO">Colorado</option>
-                          <option value="ID">Idaho</option>
-                          <option value="MT">Montana</option>
+                          {% for key, authors in author %}
+                            <option value="{{ key }}">{{ authors.name|t }}</option>
+                          {% endfor %}
                         </select>
                       </div>
                       <div class="col-lg-4 col-sm-4">
                         <select class="form-control m-select2" id="m_select2_year" name="param">
-                          <option value="">Year of Plublication</option>
-                          <option value="HI">Hawaii</option>
-                          <option value="CA">California</option>
-                          <option value="NV">Nevada</option>
-                          <option value="OR">Oregon</option>
-                          <option value="WA">Washington</option>
-                          <option value="AZ">Arizona</option>
-                          <option value="CO">Colorado</option>
-                          <option value="ID">Idaho</option>
-                          <option value="MT">Montana</option>
+                          <option value="">Year</option>
+                          {% for key, years in year %}
+                            <option value="{{ key }}">{{ years.name|t }}</option>
+                          {% endfor %}
                         </select>
                       </div>
                     </div>
-
                     <div class="form-group m-form__group row">
                       <div class="col-lg-4 col-sm-4">
                         <select class="form-control m-select2" id="m_select2_subject" name="param">
                           <option value="">Subject</option>
-                          <option value="HI">Hawaii</option>
-                          <option value="CA">California</option>
-                          <option value="NV">Nevada</option>
-                          <option value="OR">Oregon</option>
-                          <option value="WA">Washington</option>
-                          <option value="AZ">Arizona</option>
-                          <option value="CO">Colorado</option>
-                          <option value="ID">Idaho</option>
-                          <option value="MT">Montana</option>
+                          {% for key, subjects in subject %}
+                            <option value="{{ key }}">{{ subjects.name|t }}</option>
+                          {% endfor %}
                         </select>
                       </div>
                       <div class="col-lg-4 col-md-4 col-sm-4">
                         <select class="form-control m-select2" id="m_select2_topic" name="param">
                           <option value="">Topic</option>
-                          <option value="HI">Hawaii</option>
-                          <option value="CA">California</option>
-                          <option value="NV">Nevada</option>
-                          <option value="OR">Oregon</option>
-                          <option value="WA">Washington</option>
-                          <option value="AZ">Arizona</option>
-                          <option value="CO">Colorado</option>
-                          <option value="ID">Idaho</option>
-                          <option value="MT">Montana</option>
+                          {% for key, topics in topic %}
+                            <option value="{{ key }}">{{ topics.name|t }}</option>
+                          {% endfor %}
                         </select>
                       </div>
                       <div class="col-lg-4 col-sm-4">
                         <select class="form-control m-select2" id="m_select2_sub_topic" name="param">
                           <option value="">Sub Topic</option>
-                          <option value="HI">Hawaii</option>
-                          <option value="CA">California</option>
-                          <option value="NV">Nevada</option>
-                          <option value="OR">Oregon</option>
-                          <option value="WA">Washington</option>
-                          <option value="AZ">Arizona</option>
-                          <option value="CO">Colorado</option>
-                          <option value="ID">Idaho</option>
-                          <option value="MT">Montana</option>
+                          {% for key, attempts in attempt %}
+                            <option value="{{ key }}">{{ attempts.name|t }}</option>
+                          {% endfor %}
                         </select>
                       </div>
                     </div>
@@ -357,46 +360,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Subject 1</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Subject 2</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Subject 3</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Subject 3</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Subject 3</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Subject 3</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Subject 3</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Subject 3</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Subject 3</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Subject 3</td>
-                      </tr>
+                      {% for key, question in questions %}
+                        <tr>
+                          <th scope="row">{{ loop.index }}</th>
+                          <td data-nid="{{ key }}">{{ question.title|t }}</td>
+                        </tr>
+                      {% endfor %}
                     </tbody>
                   </table>
                 </div>
@@ -460,7 +429,7 @@
                     </li>
                     <li class="m-portlet__nav-item">
                       <a href="#" m-portlet-tool="fullscreen" class="m-portlet__nav-link m-portlet__nav-link--icon"><i class="la la-expand"></i></a>
-                    </li>s
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -479,7 +448,6 @@
                 <a href="#" title="Share on Telegram"><span class="fab fa-telegram"></span></a>
                 <a href="#" title="Share on Facebook"><span class="flaticon-facebook-logo-button"></span></a>
                 <a href="#" title="Copy the link"><span class="fa fa-copy"></span></a>
-                <!-- <input class="btn m-btn--pill btn-danger float-right" type="reset" value="Report an error"> -->
                 <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#m_modal_5">Report an error</button>
               </div>
             </div>

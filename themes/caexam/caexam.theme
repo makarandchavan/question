@@ -135,6 +135,64 @@ function caexam_preprocess_page(&$vars) {
       $vars['front_content_body'] = $front_content->get('body')->value;
     }
   }
+  
+  if($vars['path_arg'] == 'questions') {
+    $vid = 'exam';
+    $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid);
+    foreach ($terms as $term) {
+     $vars['exam'][$term->tid] = array(
+      'name' => $term->name
+     );
+    }
+    $vid = 'author';
+    $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid);
+    foreach ($terms as $term) {
+     $vars['author'][$term->tid] = array(
+      'name' => $term->name
+     );
+    }
+    $vid = 'year_of_plublication';
+    $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid);
+    foreach ($terms as $term) {
+     $vars['year'][$term->tid] = array(
+      'name' => $term->name
+     );
+    }
+    $vid = 'subject';
+    $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid);
+    foreach ($terms as $term) {
+     $vars['subject'][$term->tid] = array(
+      'name' => $term->name
+     );
+    }
+    $vid = 'topic';
+    $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid);
+    foreach ($terms as $term) {
+     $vars['topic'][$term->tid] = array(
+      'name' => $term->name
+     );
+    }
+    $vid = 'attempt';
+    $terms =\Drupal::entityTypeManager()->getStorage('taxonomy_term')->loadTree($vid);
+    foreach ($terms as $term) {
+     $vars['attempt'][$term->tid] = array(
+      'name' => $term->name
+     );
+    }
+    // Get all content related to questions.
+    $query = \Drupal::entityQuery('node')
+      ->condition('type', 'question')
+      ->condition('status', 1);
+    $result = $query->execute();
+    if(!empty($result)) {
+      $questions = \Drupal\node\Entity\Node::loadMultiple($result);
+      foreach ($questions as $nid => $question) {
+        $vars['questions'][$nid]['title'] = $question->get('title')->value;
+        $vars['questions'][$nid]['solution'] = $question->get('body')->value;
+        $vars['questions'][$nid]['video_solution'] = $question->get('field_video_solution')->value;
+      }
+    }
+  }
 }
 
 function caexam_preprocess_node(&$vars) {
