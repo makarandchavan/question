@@ -59,9 +59,25 @@
 	background: #fff;
 }
 
+.answer #m_tabs_3_4 .m-timeline-3 .m-timeline-3__item:before {
+	left: 10rem;
+}
+
+.answer #m_tabs_3_4 .m-timeline-3 .m-timeline-3__item .m-timeline-3__item-time {
+	width: 8rem;
+}
+
+.answer #m_tabs_3_4 .m-timeline-3 .m-timeline-3__item .m-timeline-3__item-desc {
+	padding-left: 12rem;
+}
+
 .question.m-portlet--fullscreen .m-scrollable {
 	width: 50%;
 	margin: 0 auto;
+}
+
+.custom-share {
+	padding-top: 10px;
 }
 
 .search-q .row+.row {
