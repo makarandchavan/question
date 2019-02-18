@@ -88,6 +88,11 @@
 	padding-bottom: 0;
 }
 
+.question-share a:hover,
+.custom-share a:hover {
+	text-decoration: none;
+}
+
 .custom-tabs .nav-tabs > li {
     position:relative;
 }
