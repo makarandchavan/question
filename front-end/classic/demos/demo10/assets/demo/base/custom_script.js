@@ -31,9 +31,10 @@ $(function () {
 
     $('.add-contact').click(function (e) {
         e.preventDefault();
-        var id = $(".nav-tabs").children().length;
+        var id = $(".nav-tabs").children().length - 3;
+        console.log(id);
         var tabId = 'contact_' + id;
-        $(this).closest('li').before('<li class="nav-item"><a class="nav-link" href="#contact_' + id + '">New Tab</a> <span> x </span></li>');
+        $(this).closest('li').before('<li class="nav-item"><a class="nav-link" href="#contact_' + id + '">Type '+id+'</a> <span> x </span></li>');
         $('.tab-content').append('<div class="tab-pane" id="' + tabId + '">Contact Form: New Contact ' + id + '</div>');
        $('.nav-tabs li:nth-child(' + id + ') a').click();
     });
