@@ -104,6 +104,35 @@
 	cursor: pointer;
 }
 
+.video-filter .m-form.m-form--fit .m-form__group {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.video-filter .m-portlet {
+	margin-bottom: 0;
+}
+
+.videos .m-widget19 .m-widget19__content .m-widget19__header .m-widget19__info .m-widget19__username {
+	margin-bottom: 0;
+}
+
+.video-container {
+position: relative;
+padding-bottom: 56.25%;
+padding-top: 30px; height: 0; overflow: hidden;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+}
+
 .custom-tabs .nav-tabs > li > span {
     display:none;
     cursor: pointer;
