@@ -59,9 +59,25 @@
 	background: #fff;
 }
 
+.answer #m_tabs_3_4 .m-timeline-3 .m-timeline-3__item:before {
+	left: 10rem;
+}
+
+.answer #m_tabs_3_4 .m-timeline-3 .m-timeline-3__item .m-timeline-3__item-time {
+	width: 8rem;
+}
+
+.answer #m_tabs_3_4 .m-timeline-3 .m-timeline-3__item .m-timeline-3__item-desc {
+	padding-left: 12rem;
+}
+
 .question.m-portlet--fullscreen .m-scrollable {
 	width: 50%;
 	margin: 0 auto;
+}
+
+.custom-share {
+	padding-top: 10px;
 }
 
 .search-q .row+.row {
@@ -72,6 +88,11 @@
 	padding-bottom: 0;
 }
 
+.question-share a:hover,
+.custom-share a:hover {
+	text-decoration: none;
+}
+
 .custom-tabs .nav-tabs > li {
     position:relative;
 }
@@ -79,17 +100,27 @@
     display:inline-block;
 }
 
+.question-list tbody tr {
+	cursor: pointer;
+}
+
 .custom-tabs .nav-tabs > li > span {
     display:none;
-    cursor:pointer;
-    position:absolute;
-    right: 6px;
-    top: 8px;
-    color: red;
+    cursor: pointer;
+    position: absolute;
+    right: 5px;
+    top: -1px;
+    font-weight: 600;
+    font-size: 11px;
 }
 
 .custom-tabs .nav-tabs > li:hover > span {
     display: inline-block;
+}
+
+.report-success,
+.copy-text-value {
+	display: none;
 }
 
 @media (min-width: 1025px) {

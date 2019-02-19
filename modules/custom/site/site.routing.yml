@@ -30,6 +30,22 @@ site.question: # This is a route name.
   requirements:
     _permission: 'access content'
 
+site.get_question: # This is a route name.
+  path: '/get-question'
+  defaults:
+    _controller: '\Drupal\site\Controller\SiteController::getQuestion'
+    _title: ''
+  requirements:
+    _permission: 'access content'
+
+site.report_error: # This is a route name.
+  path: '/report-error'
+  defaults:
+    _controller: '\Drupal\site\Controller\SiteController::reportError'
+    _title: ''
+  requirements:
+    _permission: 'access content'
+
 site.upload: # This is a route name.
   path: '/uploadfile'
   defaults:

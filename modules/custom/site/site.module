@@ -37,15 +37,11 @@ function site_mail($key, &$message, $params) {
   	    $message['params']['attachments'][] = $params['attachment'];
   	  }
     break;
-    case 'quote_mail':
+    case 'report_mail':
       $message['from'] = \Drupal::config('system.site')->get('mail');
       $message['headers']['Reply-To'] = 'no-reply@poptranslation.com';
       $message['subject'] = t('Thank you', array(), $options);
       $message['body'][] = $params['message'];
-      // Add attachment when available.
-  	  if (isset($params['attachment'])) {
-  	    $message['params']['attachments'][] = $params['attachment'];
-  	  }
     break;
     case 'free_mail_admin':
       $message['from'] = \Drupal::config('system.site')->get('mail');

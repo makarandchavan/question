@@ -156,6 +156,480 @@ class SiteController extends ControllerBase {
   }
 
   /**
+   * Question list.
+   */
+  public function getQuestion() {
+    global $base_url;
+    $nid = $_GET['qid'];
+
+    // Get all content related to questions.
+    $query = \Drupal::entityQuery('node')
+      ->condition('type', 'question')
+      ->condition('nid', $nid)
+      ->condition('status', 1);
+    $result = $query->execute();
+
+    $question = \Drupal\node\Entity\Node::loadMultiple($result);
+    $question = reset($question);
+
+    $questions['nid'] = $nid;
+    $questions['title'] = $question->get('title')->value;
+    $questions['question'] = $question->get('field_question_body')->value;
+    $questions['solution'] = $question->get('body')->value;
+    $questions['video_solution'] = $question->get('field_video_solution')->value;
+    $questions['question_review'] = $question->get('field_examiner_review_')->value;
+    
+    echo Json::encode($questions);
+    exit;
+
+    $html_response = '<div class="m-portlet m-portlet--primary m-portlet--head-solid-bg m-portlet--head-sm m-portlet--rounded question" m-portlet="true" id="m_portlet_tools_1">
+              <div class="m-portlet__head">
+                <div class="m-portlet__head-caption">
+                  <div class="m-portlet__head-title">
+                    <span class="m-portlet__head-icon">
+                      <i class="fa fa-question-circle"></i>
+                    </span>
+                    <h3 class="m-portlet__head-text">
+                      '.$nid.'
+                      <small>' . $questions['title'] . '</small>
+                    </h3>
+                  </div>
+                </div>
+                <div class="m-portlet__head-tools">
+                  <ul class="m-portlet__nav">
+                    <li class="m-portlet__nav-item">
+                      <a href="#" m-portlet-tool="toggle" class="m-portlet__nav-link m-portlet__nav-link--icon"><i class="la la-angle-down"></i></a>
+                    </li>
+                    <li class="m-portlet__nav-item">
+                      <a href="#" m-portlet-tool="fullscreen" class="m-portlet__nav-link m-portlet__nav-link--icon"><i class="la la-expand"></i></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="m-portlet__body">
+                <div class="m-scrollable" data-scrollbar-shown="true" data-scrollable="true" data-height="300">
+                  ' . $questions['question'] . '
+                </div>
+              </div>
+              <div class="m-portlet__foot question-share">
+                <a href="whatsapp://send?text=The text to share!" data-action="' . $base_url . '/node/'. $nid .'" title="Share on Whatsapp"><span class="fab fa-whatsapp"></span></a>
+                <a href="https://telegram.me/share/url?url=' . $base_url . '/node/'. $nid .'" title="Share on Telegram"><span class="fab fa-telegram"></span></a>
+                <a href="http://www.facebook.com/sharer.php?u=' . $base_url . '/node/'. $nid .'" title="Share on Facebook"><span class="flaticon-facebook-logo-button"></span></a>
+                <a href="' . $base_url . '/node/'. $nid .'" title="Copy the link" class="copy-url"><span class="fa fa-copy"></span></a>
+                <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#m_modal_5">Report an error</button>
+              </div>
+            </div>
+
+            <!-- Answer starts -->
+            <div class="m-portlet m-portlet--collapsed m-portlet--head-sm answer" m-portlet="true" id="m_portlet_tools_7">
+              <div class="m-portlet__head">
+                <div class="m-portlet__head-caption">
+                  <div class="m-portlet__head-title">
+                    <span class="m-portlet__head-icon">
+                      <i class="fa fa-lightbulb"></i>
+                    </span>
+                    <h3 class="m-portlet__head-text">
+                      Answer
+                    </h3>
+                  </div>
+                </div>
+                <div class="m-portlet__head-tools">
+                  <ul class="m-portlet__nav">
+                    <li class="m-portlet__nav-item">
+                      <a href="#" m-portlet-tool="toggle" class="m-portlet__nav-link m-portlet__nav-link--icon"><i class="la la-angle-down"></i></a>
+                    </li>
+                    <li class="m-portlet__nav-item">
+                      <a href="#" m-portlet-tool="fullscreen" class="m-portlet__nav-link m-portlet__nav-link--icon"><i class="la la-expand"></i></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="m-portlet__body">
+                <div class="m-scrollable" data-scrollbar-shown="true" data-scrollable="true" data-height="600" style="overflow:hidden; height: 300px">
+                  <div class="m-portlet">
+                    <div class="m-portlet__body">
+                      <ul class="nav nav-pills" role="tablist">
+                        <li class="nav-item">
+                          <a class="nav-link active" data-toggle="tab" href="#m_tabs_3_1">Solution</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-toggle="tab" href="#m_tabs_3_2">Video Solution</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-toggle="tab" href="#m_tabs_3_3">Examiner\'s Review</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-toggle="tab" href="#m_tabs_3_4">Notes</a>
+                        </li>
+                        <li class="nav-item">
+                          <a class="nav-link" data-toggle="tab" href="#m_tabs_3_5">Comment/Share Your Doubts</a>
+                        </li>
+                      </ul>
+                      <div class="tab-content">
+                        <div class="tab-pane active" id="m_tabs_3_1" role="tabpanel">
+                          ' . $questions['solution'] . '
+                        </div>
+                        <div class="tab-pane" id="m_tabs_3_2" role="tabpanel">
+                          <div style="text-align: center;">
+                            ' . $questions['video_solution'] . '
+                          </div>
+                        </div>
+                        <div class="tab-pane" id="m_tabs_3_3" role="tabpanel">
+                          <div class="cont">
+                            ' . $questions['question_review'] . '
+                          </div>
+                        </div>
+                        <div class="tab-pane" id="m_tabs_3_4" role="tabpanel">
+                          <!--Begin::Portlet-->
+                        <div class="m-portlet m-portlet--full-height ">
+                          <div class="m-portlet__head">
+                            <div class="m-portlet__head-caption">
+                              <div class="m-portlet__head-title">
+                                <h3 class="m-portlet__head-text">
+                                  Notes
+                                </h3>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="m-portlet__body">
+                            <div class="tab-content">
+                              <div class="tab-pane active" id="m_widget2_tab1_content">
+
+                                <!--Begin::Timeline 3 -->
+                                <div class="m-timeline-3">
+                                  <div class="m-timeline-3__items">
+                                    <div class="m-timeline-3__item m-timeline-3__item--info">
+                                      <span class="m-timeline-3__item-time">09-02-2019</span>
+                                      <div class="m-timeline-3__item-desc">
+                                        <span class="m-timeline-3__item-text">
+                                          Lorem ipsum dolor sit amit,consectetur eiusmdd tempor
+                                        </span><br>
+                                        <span class="m-timeline-3__item-user-name">
+                                          <a href="#" class="m-link m-link--metal m-timeline-3__item-link">
+                                            By Bob
+                                          </a>
+                                        </span>
+                                      </div>
+                                    </div>
+                                    <div class="m-timeline-3__item m-timeline-3__item--warning">
+                                      <span class="m-timeline-3__item-time">09-02-2019</span>
+                                      <div class="m-timeline-3__item-desc">
+                                        <span class="m-timeline-3__item-text">
+                                          Lorem ipsum dolor sit amit
+                                        </span><br>
+                                        <span class="m-timeline-3__item-user-name">
+                                          <a href="#" class="m-link m-link--metal m-timeline-3__item-link">
+                                            By Sean
+                                          </a>
+                                        </span>
+                                      </div>
+                                    </div>
+                                    <div class="m-timeline-3__item m-timeline-3__item--brand">
+                                      <span class="m-timeline-3__item-time">09-02-2019</span>
+                                      <div class="m-timeline-3__item-desc">
+                                        <span class="m-timeline-3__item-text">
+                                          Lorem ipsum dolor sit amit eiusmdd tempor
+                                        </span><br>
+                                        <span class="m-timeline-3__item-user-name">
+                                          <a href="#" class="m-link m-link--metal m-timeline-3__item-link">
+                                            By James
+                                          </a>
+                                        </span>
+                                      </div>
+                                    </div>
+                                    <div class="m-timeline-3__item m-timeline-3__item--success">
+                                      <span class="m-timeline-3__item-time">09-02-2019</span>
+                                      <div class="m-timeline-3__item-desc">
+                                        <span class="m-timeline-3__item-text">
+                                          Lorem ipsum dolor
+                                        </span><br>
+                                        <span class="m-timeline-3__item-user-name">
+                                          <a href="#" class="m-link m-link--metal m-timeline-3__item-link">
+                                            By James
+                                          </a>
+                                        </span>
+                                      </div>
+                                    </div>
+                                    <div class="m-timeline-3__item m-timeline-3__item--danger">
+                                      <span class="m-timeline-3__item-time">09-02-2019</span>
+                                      <div class="m-timeline-3__item-desc">
+                                        <span class="m-timeline-3__item-text">
+                                          Lorem ipsum dolor sit amit,consectetur eiusmdd
+                                        </span><br>
+                                        <span class="m-timeline-3__item-user-name">
+                                          <a href="#" class="m-link m-link--metal m-timeline-3__item-link">
+                                            By Derrick
+                                          </a>
+                                        </span>
+                                      </div>
+                                    </div>
+                                    <div class="m-timeline-3__item m-timeline-3__item--info">
+                                      <span class="m-timeline-3__item-time">09-02-2019</span>
+                                      <div class="m-timeline-3__item-desc">
+                                        <span class="m-timeline-3__item-text">
+                                          Lorem ipsum dolor sit amit,consectetur
+                                        </span><br>
+                                        <span class="m-timeline-3__item-user-name">
+                                          <a href="#" class="m-link m-link--metal m-timeline-3__item-link">
+                                            By Iman
+                                          </a>
+                                        </span>
+                                      </div>
+                                    </div>
+                                    <div class="m-timeline-3__item m-timeline-3__item--brand">
+                                      <span class="m-timeline-3__item-time">09-02-2019</span>
+                                      <div class="m-timeline-3__item-desc">
+                                        <span class="m-timeline-3__item-text">
+                                          Lorem ipsum dolor sit consectetur eiusmdd tempor
+                                        </span><br>
+                                        <span class="m-timeline-3__item-user-name">
+                                          <a href="#" class="m-link m-link--metal m-timeline-3__item-link">
+                                            By Aziko
+                                          </a>
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <!--End::Timeline 3 -->
+                                </div>
+                                <div class="tab-pane" id="m_widget2_tab2_content">
+
+                                  <!--Begin::Timeline 3 -->
+                                  <div class="m-timeline-3">
+                                    <div class="m-timeline-3__items">
+                                      <div class="m-timeline-3__item m-timeline-3__item--info">
+                                        <span class="m-timeline-3__item-time m--font-focus">09:00</span>
+                                        <div class="m-timeline-3__item-desc">
+                                          <span class="m-timeline-3__item-text">
+                                            Contrary to popular belief, Lorem Ipsum is not simply random text.
+                                          </span><br>
+                                          <span class="m-timeline-3__item-user-name">
+                                            <a href="#" class="m-link m-link--metal m-timeline-3__item-link">
+                                              By Bob
+                                            </a>
+                                          </span>
+                                        </div>
+                                      </div>
+                                      <div class="m-timeline-3__item m-timeline-3__item--warning">
+                                        <span class="m-timeline-3__item-time m--font-warning">10:00</span>
+                                        <div class="m-timeline-3__item-desc">
+                                          <span class="m-timeline-3__item-text">
+                                            There are many variations of passages of Lorem Ipsum available.
+                                          </span><br>
+                                          <span class="m-timeline-3__item-user-name">
+                                            <a href="#" class="m-link m-link--metal m-timeline-3__item-link">
+                                              By Sean
+                                            </a>
+                                          </span>
+                                        </div>
+                                      </div>
+                                      <div class="m-timeline-3__item m-timeline-3__item--brand">
+                                        <span class="m-timeline-3__item-time m--font-primary">11:00</span>
+                                        <div class="m-timeline-3__item-desc">
+                                          <span class="m-timeline-3__item-text">
+                                            Contrary to popular belief, Lorem Ipsum is not simply random text.
+                                          </span><br>
+                                          <span class="m-timeline-3__item-user-name">
+                                            <a href="#" class="m-link m-link--metal m-timeline-3__item-link">
+                                              By James
+                                            </a>
+                                          </span>
+                                        </div>
+                                      </div>
+                                      <div class="m-timeline-3__item m-timeline-3__item--success">
+                                        <span class="m-timeline-3__item-time m--font-success">12:00</span>
+                                        <div class="m-timeline-3__item-desc">
+                                          <span class="m-timeline-3__item-text">
+                                            The standard chunk of Lorem Ipsum used since the 1500s is reproduced.
+                                          </span><br>
+                                          <span class="m-timeline-3__item-user-name">
+                                            <a href="#" class="m-link m-link--metal m-timeline-3__item-link">
+                                              By James
+                                            </a>
+                                          </span>
+                                        </div>
+                                      </div>
+                                      <div class="m-timeline-3__item m-timeline-3__item--danger">
+                                        <span class="m-timeline-3__item-time m--font-warning">14:00</span>
+                                        <div class="m-timeline-3__item-desc">
+                                          <span class="m-timeline-3__item-text">
+                                            Latin words, combined with a handful of model sentence structures.
+                                          </span><br>
+                                          <span class="m-timeline-3__item-user-name">
+                                            <a href="#" class="m-link m-link--metal m-timeline-3__item-link">
+                                              By Derrick
+                                            </a>
+                                          </span>
+                                        </div>
+                                      </div>
+                                      <div class="m-timeline-3__item m-timeline-3__item--info">
+                                        <span class="m-timeline-3__item-time m--font-info">15:00</span>
+                                        <div class="m-timeline-3__item-desc">
+                                          <span class="m-timeline-3__item-text">
+                                            Contrary to popular belief, Lorem Ipsum is not simply random text.
+                                          </span><br>
+                                          <span class="m-timeline-3__item-user-name">
+                                            <a href="#" class="m-link m-link--metal m-timeline-3__item-link">
+                                              By Iman
+                                            </a>
+                                          </span>
+                                        </div>
+                                      </div>
+                                      <div class="m-timeline-3__item m-timeline-3__item--brand">
+                                        <span class="m-timeline-3__item-time m--font-danger">17:00</span>
+                                        <div class="m-timeline-3__item-desc">
+                                          <span class="m-timeline-3__item-text">
+                                            Lorem Ipsum is therefore always free from repetition, injected humour.
+                                          </span><br>
+                                          <span class="m-timeline-3__item-user-name">
+                                            <a href="#" class="m-link m-link--metal m-timeline-3__item-link">
+                                              By Aziko
+                                            </a>
+                                          </span>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+
+                                  <!--End::Timeline 3 -->
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <form>
+                            <div class="form-group">
+                              <label for="message-text" class="form-control-label">Notes</label>
+                              <textarea class="form-control" id="review" rows="6"></textarea>
+                            </div>
+                            <div class="form-group">
+                              <button type="button" class="btn btn-primary">Submit</button>
+                            </div>
+                          </form>
+                        </div>
+                        <div class="tab-pane" id="m_tabs_3_5" role="tabpanel">
+                          <div class="m-portlet m-portlet--full-height ">
+                            <div class="m-portlet__head">
+                              <div class="m-portlet__head-caption">
+                                <div class="m-portlet__head-title">
+                                  <h3 class="m-portlet__head-text">
+                                    Comments
+                                  </h3>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="m-portlet__body">
+                              <div class="m-widget3">
+                                <div class="m-widget3__item">
+                                  <div class="m-widget3__header">
+                                    <div class="m-widget3__user-img">
+                                      <img class="m-widget3__img" src="assets/app/media/img/users/user4.jpg" alt="">
+                                    </div>
+                                    <div class="m-widget3__info">
+                                      <span class="m-widget3__username">
+                                        Melania Trump
+                                      </span><br>
+                                      <span class="m-widget3__time">
+                                        2 day ago
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div class="m-widget3__body">
+                                    <p class="m-widget3__text">
+                                      Lorem ipsum dolor sit amet,consectetuer edipiscing elit,sed diam nonummy nibh euismod tinciduntut laoreet doloremagna aliquam erat volutpat.
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="m-widget3__item">
+                                  <div class="m-widget3__header">
+                                    <div class="m-widget3__user-img">
+                                      <img class="m-widget3__img" src="assets/app/media/img/users/user4.jpg" alt="">
+                                    </div>
+                                    <div class="m-widget3__info">
+                                      <span class="m-widget3__username">
+                                        Lebron King James
+                                      </span><br>
+                                      <span class="m-widget3__time">
+                                        1 day ago
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div class="m-widget3__body">
+                                    <p class="m-widget3__text">
+                                      Lorem ipsum dolor sit amet,consectetuer edipiscing elit,sed diam nonummy nibh euismod tinciduntut laoreet doloremagna aliquam erat volutpat.Ut wisi enim ad minim veniam,quis nostrud exerci tation ullamcorper.
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="m-widget3__item">
+                                  <div class="m-widget3__header">
+                                    <div class="m-widget3__user-img">
+                                      <img class="m-widget3__img" src="assets/app/media/img/users/user4.jpg" alt="">
+                                    </div>
+                                    <div class="m-widget3__info">
+                                      <span class="m-widget3__username">
+                                        Deb Gibson
+                                      </span><br>
+                                      <span class="m-widget3__time">
+                                        3 weeks ago
+                                      </span>
+                                    </div>
+                                  </div>
+                                  <div class="m-widget3__body">
+                                    <p class="m-widget3__text">
+                                      Lorem ipsum dolor sit amet,consectetuer edipiscing elit,sed diam nonummy nibh euismod tinciduntut laoreet doloremagna aliquam erat volutpat.
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          <!--end:: Widgets/Support Tickets -->
+                          <form>
+                            <div class="form-group">
+                              <label for="message-text" class="form-control-label">Comment/Share Your Doubts</label>
+                              <textarea class="form-control" id="review" rows="6"></textarea>
+                            </div>
+                            <div class="form-group">
+                              <button type="button" class="btn btn-primary">Submit Doubts</button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Answer ends -->';
+    // Return HTML output.
+    echo $html_response;
+    exit;
+  }
+
+  function reportError() {
+    $get_parameters = $_GET;
+    $user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+
+    // Send mail to admin.
+    $mailManager = \Drupal::service('plugin.manager.mail');
+    // send mail to user.
+    $module = 'site';
+    $key = 'report_mail';
+    $to = \Drupal::config('system.site')->get('mail');
+    $params['subject'] = $get_parameters['qid'] . ' - ' . $get_parameters['title'];
+    $params['message'] = 'Dear admin,<br><br><br>There is error reported on the question by user '. $user->get('name')->value .'. Please have a look.<br><br><br>Regards,<br> CAEXAM.';
+    $langcode = \Drupal::currentUser()->getPreferredLangcode();
+    $send = true;
+    $result = $mailManager->mail($module, $key, $to, $langcode, $params, NULL, $send);
+
+    return [
+      '#markup' => 'Done',
+    ];
+  }
+
+  /**
    * Quote file handle.
    */
   public function uploadFile() {

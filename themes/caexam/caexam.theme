@@ -53,7 +53,6 @@ function caexam_preprocess_taxonomy_term(&$vars) {
 
 function caexam_preprocess_form(&$vars) {
   $vars['contact_title'] = $vars['element']['#title'];
-  //echo "<pre>";print_r($vars['element']['#title']);exit;
 }
 
 function caexam_theme_suggestions_form_alter(array &$suggestions, array $variables) {
@@ -186,10 +185,48 @@ function caexam_preprocess_page(&$vars) {
     $result = $query->execute();
     if(!empty($result)) {
       $questions = \Drupal\node\Entity\Node::loadMultiple($result);
+      $count = 0;
       foreach ($questions as $nid => $question) {
+        //echo "<pre>";print_r($question->get('field_exam_ref')->value);exit;
+        $vars['questions'][$nid]['nid'] = $nid;
         $vars['questions'][$nid]['title'] = $question->get('title')->value;
+        $vars['questions'][$nid]['question'] = $question->get('field_question_body')->value;
         $vars['questions'][$nid]['solution'] = $question->get('body')->value;
         $vars['questions'][$nid]['video_solution'] = $question->get('field_video_solution')->value;
+        $vars['questions'][$nid]['question_review'] = $question->get('field_examiner_review_')->value;
+
+        $exam = $question->get('field_exam_ref')->first();
+        /** @var \Drupal\Core\Entity\Plugin\DataType\EntityReference $entityReference */
+        $exam = $exam->get('entity');
+        /** @var \Drupal\Core\Entity\Plugin\DataType\EntityAdapter $entityAdapter */
+        $exam = $exam->getTarget();
+        /** @var \Drupal\Core\Entity\EntityInterface $referencedEntity */
+        $exam = $exam->getValue();
+
+        //echo "<pre>";print_r($exam);exit;
+
+         $vars['questions'][$nid]['filter_data'] = $question->get('field_exam_ref')->value . " - " . $question->get('field_author_ref')->value . " - " . $question->get('field_attempt_ref')->value . " - ". $question->get('field_topic')->value . " - ". $question->get('field_subject_ref')->value . " - " . $question->get('field_year_of_publication_ref')->value;
+
+        if($count == 0 && empty($_GET['qid'])) {
+          $vars['fquestion']['nid'] = $nid;
+          $vars['fquestion']['title'] = $question->get('title')->value;
+          $vars['fquestion']['question'] = $question->get('field_question_body')->value;
+          $vars['fquestion']['solution'] = $question->get('body')->value;
+          $vars['fquestion']['video_solution'] = $question->get('field_video_solution')->value;
+          $vars['fquestion']['question_review'] = $question->get('field_examiner_review_')->value;
+        }
+        else {
+          $questions = \Drupal\node\Entity\Node::loadMultiple(array($_GET['qid']));
+          foreach ($questions as $nid => $question) {
+            $vars['fquestion']['nid'] = $nid;
+            $vars['fquestion']['title'] = $question->get('title')->value;
+            $vars['fquestion']['question'] = $question->get('field_question_body')->value;
+            $vars['fquestion']['solution'] = $question->get('body')->value;
+            $vars['fquestion']['video_solution'] = $question->get('field_video_solution')->value;
+            $vars['fquestion']['question_review'] = $question->get('field_examiner_review_')->value;
+          }
+        }
+        $count++;
       }
     }
   }
