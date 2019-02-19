@@ -709,8 +709,11 @@ License: You must have a valid license purchased only from themeforest(the above
 										</div>
 									</div>
 									<div class="m-portlet__body">
+										<div class="alert m-alert--default" role="alert">
+										  	Double Click on below rows to add on your list.
+										</div>
 										<div class="m-scrollable" data-scrollbar-shown="true" data-scrollable="true" data-height="300">
-											<table class="table table-striped table-bordered" id="qList">
+											<table class="table table-striped table-bordered question-list" id="qList">
 											  <thead>
 											    <tr>
 											      <th scope="col">Question Code - <span>Topic</span></th>
@@ -718,44 +721,44 @@ License: You must have a valid license purchased only from themeforest(the above
 											    </tr>
 											  </thead>
 											  <tbody>
-											    <tr>
-											      <th scope="row">1</th>
+											    <tr id="sour0">
+											      <td>1</td>
 											      <td>Subject 1</td>
 											    </tr>
-											    <tr>
-											      <th scope="row">2</th>
+											    <tr id="sour1">
+											      <td>2</td>
 											      <td>Subject 2</td>
 											    </tr>
-											    <tr>
-											      <th scope="row">3</th>
+											    <tr id="sour2">
+											      <td>3</td>
 											      <td>Subject 3</td>
 											    </tr>
-											    <tr>
-											      <th scope="row">3</th>
+											    <tr id="sour3">
+											      <td>3</td>
 											      <td>Subject 3</td>
 											    </tr>
-											    <tr>
-											      <th scope="row">3</th>
+											    <tr id="sour4">
+											      <td>3</td>
 											      <td>Subject 3</td>
 											    </tr>
-											    <tr>
-											      <th scope="row">3</th>
+											    <tr id="sour5">
+											      <td>3</td>
 											      <td>Subject 3</td>
 											    </tr>
-											    <tr>
-											      <th scope="row">3</th>
+											    <tr id="sour6">
+											      <td>3</td>
 											      <td>Subject 3</td>
 											    </tr>
-											    <tr>
-											      <th scope="row">3</th>
+											    <tr id="sour7">
+											      <td>3</td>
 											      <td>Subject 3</td>
 											    </tr>
-											    <tr>
-											      <th scope="row">3</th>
+											    <tr id="sour8">
+											      <td>3</td>
 											      <td>Subject 3</td>
 											    </tr>
-											    <tr>
-											      <th scope="row">3</th>
+											    <tr id="sour9">
+											      <td>3</td>
 											      <td>Subject 3</td>
 											    </tr>
 											  </tbody>
@@ -794,19 +797,41 @@ License: You must have a valid license purchased only from themeforest(the above
 										</ul>
 										<div class="tab-content">
 											<div class="tab-pane active" id="m_tabs_1_1" role="tabpanel">
-												Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-												specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-												and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+												<form method="POST" action="">
+													<table class="table table-striped table-bordered question-list" id="">
+														<thead>
+														    <tr>
+															    <th scope="col">Question Code - <span>Topic</span></th>
+															    <th scope="col">Subject</th>
+														    </tr>
+														</thead>
+														<tbody>
+														    
+														</tbody>
+													</table>
+												</form>
 											</div>
 											<div class="tab-pane" id="m_tabs_1_2" role="tabpanel">
-												It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more
-												recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+												<form method="POST" action="">
+													<table class="table table-striped table-bordered question-list" id="">
+														<thead>
+														    <tr>
+															    <th scope="col">Question Code - <span>Topic</span></th>
+															    <th scope="col">Subject</th>
+														    </tr>
+														</thead>
+														<tbody>
+														    
+														</tbody>
+													</table>
+												</form>
 											</div>
-											<!-- <div class="tab-pane" id="m_tabs_1_3" role="tabpanel">
-												Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
-												specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged
-											</div> -->
 										</div>
+										<form action="">
+											<div class="form-group">
+												<button type="button" class="btn btn-primary" disabled="disabled" id="saveList">Save List</button>
+											</div>
+										</form>
 									</div>
 								</div>
 							</div>
@@ -1836,6 +1861,9 @@ License: You must have a valid license purchased only from themeforest(the above
 								<textarea class="form-control" id="message-text"></textarea>
 							</div>
 						</form>
+						<div class="alert alert-success" role="alert">
+						  	<strong>Well done!</strong> You successfully reported an error.
+						</div>
 					</div>
 					<div class="modal-footer">
 						<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
