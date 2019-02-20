@@ -372,56 +372,94 @@
                   </div>      
                 </div>
                 <div class="custom-share float-right">
-                  <a href="whatsapp://send?text=The text to share!" data-action="{{ url('<front>') }}node/{{ fquestion.nid }}" title="Share on Whatsapp"><span class="fab fa-whatsapp"></span></a>
-                  <a href="https://telegram.me/share/url?url={{ url('<front>') }}node/{{ fquestion.nid }}" title="Share on Telegram"><span class="fab fa-telegram"></span></a>
-                  <a href="http://www.facebook.com/sharer.php?u={{ url('<front>') }}node/{{ fquestion.nid }}" title="Share on Facebook"><span class="flaticon-facebook-logo-button"></span></a>
-                  <a href="#" title="Copy the link" class="copy-url"><input type="hidden" name="copy-text-value" class="copy-text-value" value="{{ url('<front>') }}node/{{ fquestion.nid }}"> <span class="fa fa-copy"></span></a>
+                  <a href="whatsapp://send?text=The text to share!" data-action="{{ url('<front>') }}node/{{ fquestion.nid }}?uid={{ uid }}" title="Share on Whatsapp"><span class="fab fa-whatsapp"></span></a>
+                  <a href="https://telegram.me/share/url?url={{ url('<front>') }}node/{{ fquestion.nid }}?uid={{ uid }}" title="Share on Telegram"><span class="fab fa-telegram"></span></a>
+                  <a href="http://www.facebook.com/sharer.php?u={{ url('<front>') }}node/{{ fquestion.nid }}?uid={{ uid }}" title="Share on Facebook"><span class="flaticon-facebook-logo-button"></span></a>
+                  <a href="#" title="Copy the link" id="copyLink" data-clipboard-text="{{ url('<front>') }}node/{{ fquestion.nid }}?uid={{ uid }}"><span class="copy fa fa-copy"></span></a>
                 </div>
               </div>
               <div class="m-portlet__body custom-tabs">
-                <ul class="nav nav-tabs" role="tablist">
-                  <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#" data-target="#m_tabs_1_1">Type 1</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#m_tabs_1_2">Type 2</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link add-contact" href="#">+ Add Tab</a>
-                  </li>
-                </ul>
-                <div class="tab-content">
-                  <div class="tab-pane active" id="m_tabs_1_1" role="tabpanel">
-                    <form method="POST" action="">
-                      <table class="table table-striped table-bordered question-list" id="">
-                        <thead>
-                            <tr>
-                              <th scope="col">Question Code - <span>Topic</span></th>
-                              <th scope="col">Subject</th>
-                            </tr>
-                        </thead>
-                        <tbody>
 
-                        </tbody>
-                      </table>
-                    </form>
+                {% if custom_questions is defined %}
+                  <ul class="nav nav-tabs" role="tablist">
+                    {% for key, questions in custom_questions %}
+                      <li class="nav-item">
+                        <a class="nav-link {% if loop.first %}active{% endif %}" data-toggle="tab" href="#" data-target="#m_tabs_{{ key+1 }}_{{ key+1 }}">Type {{ key+1 }}</a>
+                      </li>
+                    {% endfor %}
+                    <li class="nav-item">
+                      <a class="nav-link add-contact" href="#">+ Add Tab</a>
+                    </li>
+                  </ul>
+                  <div class="tab-content">
+                    {% for key, questions in custom_questions %}
+                      <div class="tab-pane {% if loop.first %}active{% endif %}" id="m_tabs_{{ loop.index }}_{{ loop.index }}" role="tabpanel">
+                        <form method="POST" action="">
+                          <table class="table table-striped table-bordered question-list" id="">
+                            <thead>
+                                <tr>
+                                  <th scope="col">Question Code - <span>Topic</span></th>
+                                  <th scope="col">Subject</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              {% for question in questions %}
+                                <tr data-nid="{{ question.nid }}">
+                                  <td>{{ question.nid }}</td>
+                                  <td>{{ question.title }}</td>
+                                </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+                        </form>
+                      </div>
+                    {% endfor %}
                   </div>
-                  <div class="tab-pane" id="m_tabs_1_2" role="tabpanel">
-                    <form method="POST" action="">
-                      <table class="table table-striped table-bordered question-list" id="">
-                        <thead>
-                            <tr>
-                              <th scope="col">Question Code - <span>Topic</span></th>
-                              <th scope="col">Subject</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                {% else %}
+                  <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" data-toggle="tab" href="#" data-target="#m_tabs_1_1">Type 1</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" data-toggle="tab" href="#m_tabs_1_2">Type 2</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link add-contact" href="#">+ Add Tab</a>
+                    </li>
+                  </ul>
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="m_tabs_1_1" role="tabpanel">
+                      <form method="POST" action="">
+                        <table class="table table-striped table-bordered question-list" id="">
+                          <thead>
+                              <tr>
+                                <th scope="col">Question Code - <span>Topic</span></th>
+                                <th scope="col">Subject</th>
+                              </tr>
+                          </thead>
+                          <tbody>
 
-                        </tbody>
-                      </table>
-                    </form>
+                          </tbody>
+                        </table>
+                      </form>
+                    </div>
+                    <div class="tab-pane" id="m_tabs_1_2" role="tabpanel">
+                      <form method="POST" action="">
+                        <table class="table table-striped table-bordered question-list" id="">
+                          <thead>
+                              <tr>
+                                <th scope="col">Question Code - <span>Topic</span></th>
+                                <th scope="col">Subject</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+
+                          </tbody>
+                        </table>
+                      </form>
+                    </div>
                   </div>
-                </div>
+                {% endif %}
                 <form action="">
                   <div class="form-group">
                     <button type="button" class="btn btn-primary" disabled="disabled" id="saveList">Save List</button>
@@ -466,7 +504,7 @@
                 <a href="whatsapp://send?text=The text to share!" data-action="{{ url('<front>') }}node/{{ fquestion.nid }}" title="Share on Whatsapp"><span class="fab fa-whatsapp"></span></a>
                 <a href="https://telegram.me/share/url?url={{ url('<front>') }}node/{{ fquestion.nid }}" title="Share on Telegram"><span class="fab fa-telegram"></span></a>
                 <a href="http://www.facebook.com/sharer.php?u={{ url('<front>') }}node/{{ fquestion.nid }}" title="Share on Facebook"><span class="flaticon-facebook-logo-button"></span></a>
-                <a href="#" title="Copy the link" class="copy-url"><input type="hidden" name="copy-text-value" class="copy-text-value" value="{{ url('<front>') }}node/{{ fquestion.nid }}"> <span class="fa fa-copy"></span></a>
+                <a href="#" title="Copy the link" id="copyLink2" data-clipboard-text="{{ url('<front>') }}node/{{ fquestion.nid }}"><span class="copy fa fa-copy"></span></a>
                 <button type="button" class="btn btn-danger float-right" data-toggle="modal" data-target="#m_modal_5">Report an error</button>
               </div>
             </div>

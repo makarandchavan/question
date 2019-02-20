@@ -1,7 +1,31 @@
 $(function () {
 	var _course = $('#course'),
 		_others = $('.others'),
-        _savelist = $('#saveList');
+        _savelist = $('#saveList'),
+        copyBtn = document.getElementById('copyLink'),
+        copyBtn2 = document.getElementById('copyLink2'),
+        clipboard = new ClipboardJS(copyBtn)
+        clipboard2 = new ClipboardJS(copyBtn2);
+
+        clipboard.on('success', function(e) {
+            console.log(e);
+        });
+
+        clipboard.on('error', function(e) {
+            console.log(e);
+        });
+
+        clipboard2.on('success', function(e) {
+            console.log(e);
+        });
+
+        clipboard2.on('error', function(e) {
+            console.log(e);
+        });
+
+        $('.copy').on('click', function(e){
+            e.preventDefault();
+        });
 
     $('#m_datepicker').datepicker();
 
@@ -38,8 +62,8 @@ $(function () {
 
         var id = $(".nav-tabs").children().length;
 
-        var tabId = 'contact_' + id;
-        $(this).closest('li').before('<li class="nav-item"><a class="nav-link" href="#contact_' + id + '">Type '+id+'</a> <span> x </span></li>');
+        var tabId = 'm_tabs_1_' + id;
+        $(this).closest('li').before('<li class="nav-item"><a class="nav-link" href="#m_tabs_1_' + id + '">Type '+id+'</a> <span> x </span></li>');
         $('.tab-content').append('<div class="tab-pane" id="'+ tabId +'" role="tabpanel"><form method="POST" action=""><table class="table table-striped table-bordered question-list" id=""><thead><tr><th scope="col">Question Code - <span>Topic</span></th><th scope="col">Subject</th></tr></thead><tbody></tbody></table></form></div>');
        $('.nav-tabs li:nth-child(' + id + ') a').click();
     });
@@ -90,7 +114,7 @@ $(function () {
 
             $(this).css("background-color", "#cacaca");
 
-            $('.custom-tabs .tab-pane.active table tbody').append('<tr data-nid="'+ $(this).attr('data-nid') +'"" id="dest' + theid + '"><td>' +
+            $('.custom-tabs .tab-pane.active table tbody').append('<tr data-nid="'+$(this).attr('data-nid')+'" id="dest' + theid + '"><td>' +
                 $(this).find("td").eq(0).html() + '</td><td>' +
                 $(this).find("td").eq(1).html() + '</td></tr>');
 
@@ -124,7 +148,24 @@ $(function () {
     // Save list
     _savelist.on('click', function(){
         $(this).attr('disabled', 'disabled');
-        console.log('SAVED');
+        var dataNid = [];
+
+        $('.custom-tabs .tab-pane').each(function (index, value) {
+            var qnids = '';
+            $(this).find('tbody tr').each(function(i, item){
+                qnids +=  $(this).attr('data-nid') + ',';
+            })
+            dataNid.push(qnids);
+            //console.log('Tab Pane' + index + ' TAB ID: ' + $(this).attr('id') + ' DATA-NID: ' + dataNid); 
+        });
+        $.ajax({
+            type: "POST",
+            data: {list:dataNid},
+            url: "/save-questions",
+            success: function(data){
+               
+            }
+        });
     });
     // End Save list
 

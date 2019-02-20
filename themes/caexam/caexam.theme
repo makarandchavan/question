@@ -229,6 +229,34 @@ function caexam_preprocess_page(&$vars) {
         $count++;
       }
     }
+
+    // Get user custom questions list.
+    $connection = \Drupal::database();
+    $uid = $vars['uid'] = \Drupal::currentUser()->id();
+    if(!empty($_GET['uid'])) {
+      $uid = $_GET['uid'];
+    }
+    $result = $connection->select('user_custom_questions', 'cq')
+    ->condition('cq.uid', $uid, '=')
+    ->fields('cq', ['uid', 'list', 'timestamp'])
+    ->execute()->fetchAll();
+
+    if(!empty($result[0])) {
+      $questions = unserialize($result[0]->list);
+      $node_data = [];
+      foreach ($questions as $key => $value) {
+        $nids = explode(",", $value);
+        $clean_nids = array_filter($nids);
+        $data = \Drupal\node\Entity\Node::loadMultiple($nids);
+        foreach ($data as $nid => $node) {
+          $node_data[$key][$nid] = array(
+            'nid' => $nid,
+            'title' => $node->get('title')->value,
+          );
+        }
+      }
+      $vars['custom_questions'] = $node_data;
+    }
   }
 }
 

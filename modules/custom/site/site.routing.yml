@@ -46,6 +46,14 @@ site.report_error: # This is a route name.
   requirements:
     _permission: 'access content'
 
+site.save_custom_questions: # This is a route name.
+  path: '/save-questions'
+  defaults:
+    _controller: '\Drupal\site\Controller\SiteController::saveQuestions'
+    _title: ''
+  requirements:
+    _permission: 'access content'
+
 site.upload: # This is a route name.
   path: '/uploadfile'
   defaults:
