@@ -1,7 +1,31 @@
 $(function () {
 	var _course = $('#course'),
 		_others = $('.others')
-        _savelist = $('#saveList');
+        _savelist = $('#saveList'),
+        copyBtn = document.getElementById('copyLink'),
+        copyBtn2 = document.getElementById('copyLink2'),
+        clipboard = new ClipboardJS(copyBtn)
+        clipboard2 = new ClipboardJS(copyBtn2);
+
+        clipboard.on('success', function(e) {
+            console.log(e);
+        });
+
+        clipboard.on('error', function(e) {
+            console.log(e);
+        });
+
+        clipboard2.on('success', function(e) {
+            console.log(e);
+        });
+
+        clipboard2.on('error', function(e) {
+            console.log(e);
+        });
+
+        $('.copy').on('click', function(e){
+            e.preventDefault();
+        });
 
     $('#m_datepicker').datepicker();
 
